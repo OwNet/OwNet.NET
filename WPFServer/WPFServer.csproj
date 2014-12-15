@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15E509CC-D711-4307-9C2D-CD0D0060715E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPFServer</RootNamespace>
+    <AssemblyName>OwNetServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\deploy\wpfproxy\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>768BE014F1F6CDF99B8D6E14C83A1684835D065C</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WPFServer_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ServerIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>References\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\WCF5\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\WCF5\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\WCF5\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\WCF5\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\WCF5\Microsoft.Data.Services.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Http">
+      <HintPath>References\Microsoft.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Http.Extensions">
+      <HintPath>References\Microsoft.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\WCF5\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ActivityEntity.cs" />
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="Multicasts\ServerInfoMulticastSender.cs" />
+    <Compile Include="CentralService\ActivityLogs.cs" />
+    <Compile Include="CentralService\GroupUpdatesReceiver.cs" />
+    <Compile Include="CentralService\UserReporter.cs" />
+    <Compile Include="DatabaseContext\Activity.cs" />
+    <Compile Include="DatabaseContext\AdminGroup.cs" />
+    <Compile Include="DatabaseContext\GroupRecommendation.cs" />
+    <Compile Include="DatabaseContext\Group.cs" />
+    <Compile Include="DatabaseContext\GroupSharedFolder.cs" />
+    <Compile Include="DatabaseContext\GroupTag.cs" />
+    <Compile Include="DatabaseContext\Page.cs" />
+    <Compile Include="DatabaseContext\SharedFile.cs" />
+    <Compile Include="DatabaseContext\SharedFolder.cs" />
+    <Compile Include="DatabaseContext\Tag.cs" />
+    <Compile Include="DatabaseContext\TagPage.cs" />
+    <Compile Include="DatabaseContext\UserGroup.cs" />
+    <Compile Include="DatabaseContext\User.cs" />
+    <Compile Include="DatabaseContext\UserVisitsPage.cs" />
+    <Compile Include="Cache\CacheEntrySaver.cs" />
+    <Compile Include="Cache\CacheMaintainer.cs" />
+    <Compile Include="Clients\ClientSearch.cs" />
+    <Compile Include="Cache\SearchDatabase.cs" />
+    <Compile Include="CentralService\CentralServiceCommunicator.cs" />
+    <Compile Include="CentralService\CacheUpdates.cs" />
+    <Compile Include="Clients\ClientsController.cs" />
+    <Compile Include="DatabaseContext\AccessLog.cs" />
+    <Compile Include="DatabaseContext\CacheLink.cs" />
+    <Compile Include="DatabaseContext\Cache\CacheHeader.cs" />
+    <Compile Include="DatabaseContext\Cache\CacheUpdate.cs" />
+    <Compile Include="DatabaseContext\GlobalCacheUpdate.cs" />
+    <Compile Include="DatabaseContext\ClientCacheLink.cs" />
+    <Compile Include="DatabaseContext\Client.cs" />
+    <Compile Include="DatabaseContext\Cache\Cache.cs" />
+    <Compile Include="DatabaseContext\Prefetch.cs" />
+    <Compile Include="DatabaseContext\SharedFileObject.cs" />
+    <Compile Include="Prefetching\PredictionEvaluation.cs" />
+    <Compile Include="DatabaseContext\Edge.cs" />
+    <Compile Include="DatabaseContext\Prediction.cs" />
+    <Compile Include="DatabaseContext\UserSimilarity.cs" />
+    <Compile Include="DatabaseContext\UserTraversesEdge.cs" />
+    <Compile Include="GroupReporter.cs" />
+    <Compile Include="Proxy\ProxyEntry.cs" />
+    <Compile Include="Prefetching\Prefetcher.cs" />
+    <Compile Include="Service References\LocalServerCentralService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SharedFiles\FileSharing.cs" />
+    <Compile Include="LiveStream.cs" />
+    <Compile Include="Services\GroupsService.cs" />
+    <Compile Include="Proxy\ProxyInstance.cs" />
+    <Compile Include="Proxy\AccessLogs\AccessLogsReporter.cs" />
+    <Compile Include="Proxy\ClientRequestProcessing.cs" />
+    <Compile Include="Proxy\RequestProcessing.cs" />
+    <Compile Include="Services\HistoryService.cs" />
+    <Compile Include="Services\IGroupsService.cs" />
+    <Compile Include="Services\IHistoryService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Jobs.cs" />
+    <Compile Include="Clients\ClientCacheLogsReporter.cs" />
+    <Compile Include="Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterTeacherWindow.xaml.cs">
+      <DependentUpon>RegisterTeacherWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Server.cs" />
+    <Compile Include="Services\ActivityService.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="SharedFiles\ProxyDataServiceHost.cs" />
+    <Compile Include="SharedFiles\SharedFilesDataService.cs" />
+    <Compile Include="SharedFiles\SharedFilesServiceStreamProvider.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\CacheService.cs" />
+    <Compile Include="Services\ICacheService.cs" />
+    <Compile Include="Services\IActivityService.cs" />
+    <Compile Include="Services\ISearchService.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Options.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegisterTeacherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DatabaseContext\MyDBContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ServiceEntities.CentralService.v2.Updates.datasource" />
+    <None Include="Properties\DataSources\WcfProxy.CentralCacheUpdateService.LinkToUpdate.datasource" />
+    <None Include="Properties\DataSources\WcfProxy.CentralCacheUpdateService.ServerInfo.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\LocalServerCentralService\LocalServerService.wsdl" />
+    <None Include="Service References\LocalServerCentralService\LocalServerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalServerCentralService\LocalServerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalServerCentralService\LocalServerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalServerCentralService\LocalServerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalServerCentralService\LocalServerService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalServerCentralService\LocalServerService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalServerCentralService\WPFServer.LocalServerCentralService.Updates.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientAndServerShared\ClientAndServerShared.csproj">
+      <Project>{A5999831-5C5C-43BA-AE0D-71014DD905D5}</Project>
+      <Name>ClientAndServerShared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{648E9757-9666-4287-A8FD-C6588F3BB320}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prefetching\Prefetching.csproj">
+      <Project>{81D0EEA4-FF38-4497-ACCB-7ADFEAF70861}</Project>
+      <Name>Prefetching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceEntities\ServiceEntities.csproj">
+      <Project>{C30F94F0-5643-4EE3-9220-12CEF999AB21}</Project>
+      <Name>ServiceEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedProxy\SharedProxy.csproj">
+      <Project>{62C7C7E6-5925-4C0C-B32A-C876DB740595}</Project>
+      <Name>SharedProxy</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ServerIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\LocalServerCentralService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LocalServerCentralService\LocalServerService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LocalServerCentralService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LocalServerCentralService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LocalServerCentralService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

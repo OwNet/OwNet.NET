@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFBD6EAA-0F3A-4201-B928-3A3C1C98EE5E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CentralServiceCore</RootNamespace>
+    <AssemblyName>CentralServiceCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessLogReporter.cs" />
+    <Compile Include="Data\AccessLog.cs" />
+    <Compile Include="Data\ActivityLog.cs" />
+    <Compile Include="Data\ClientCache.cs" />
+    <Compile Include="Data\Feedback.cs" />
+    <Compile Include="Data\WebObject.cs" />
+    <Compile Include="Data\CentralDataModelContainer.cs" />
+    <Compile Include="Data\CentralDataModelCreator.cs" />
+    <Compile Include="Data\DataController.cs" />
+    <Compile Include="Data\Group.cs" />
+    <Compile Include="Data\GroupServer.cs" />
+    <Compile Include="Data\ICentralDataModelContainer.cs" />
+    <Compile Include="Data\IDataModelCreator.cs" />
+    <Compile Include="Data\Prediction.cs" />
+    <Compile Include="Data\PreviousUpdate.cs" />
+    <Compile Include="Data\Recommendation.cs" />
+    <Compile Include="Data\RecommendedUpdate.cs" />
+    <Compile Include="Data\Server.cs" />
+    <Compile Include="Data\SyncJournalItem.cs" />
+    <Compile Include="Data\SyncJournalState.cs" />
+    <Compile Include="Data\Tag.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserCookie.cs" />
+    <Compile Include="Data\UserGroup.cs" />
+    <Compile Include="Data\Workspace.cs" />
+    <Compile Include="FeedbackReporter.cs" />
+    <Compile Include="Helpers\PredicateBuilder.cs" />
+    <Compile Include="Helpers\Serializer.cs" />
+    <Compile Include="Migrations\201302251209461_InitDatabase.cs" />
+    <Compile Include="Migrations\201302251209461_InitDatabase.Designer.cs">
+      <DependentUpon>201302251209461_InitDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303032331543_ChangeColumnsTypeInSyncJournalItem.cs" />
+    <Compile Include="Migrations\201303032331543_ChangeColumnsTypeInSyncJournalItem.Designer.cs">
+      <DependentUpon>201303032331543_ChangeColumnsTypeInSyncJournalItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303042136253_ChangeColumnsToString.cs" />
+    <Compile Include="Migrations\201303042136253_ChangeColumnsToString.Designer.cs">
+      <DependentUpon>201303042136253_ChangeColumnsToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303081430215_ChangeClientIdTypeRenameSyncId.cs" />
+    <Compile Include="Migrations\201303081430215_ChangeClientIdTypeRenameSyncId.Designer.cs">
+      <DependentUpon>201303081430215_ChangeClientIdTypeRenameSyncId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303091258454_WebObjectsAccessLogs.cs" />
+    <Compile Include="Migrations\201303091258454_WebObjectsAccessLogs.Designer.cs">
+      <DependentUpon>201303091258454_WebObjectsAccessLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303091752140_WebObjectIsTracked.cs" />
+    <Compile Include="Migrations\201303091752140_WebObjectIsTracked.Designer.cs">
+      <DependentUpon>201303091752140_WebObjectIsTracked.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303100025057_SyncJournalItemSyncWithType.cs" />
+    <Compile Include="Migrations\201303100025057_SyncJournalItemSyncWithType.Designer.cs">
+      <DependentUpon>201303100025057_SyncJournalItemSyncWithType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303101413370_AddClientCaches.cs" />
+    <Compile Include="Migrations\201303101413370_AddClientCaches.Designer.cs">
+      <DependentUpon>201303101413370_AddClientCaches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303101714340_AddUidToClientCaches.cs" />
+    <Compile Include="Migrations\201303101714340_AddUidToClientCaches.Designer.cs">
+      <DependentUpon>201303101714340_AddUidToClientCaches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303102357548_SyncJournalItem-OperationTypeValue.cs" />
+    <Compile Include="Migrations\201303102357548_SyncJournalItem-OperationTypeValue.Designer.cs">
+      <DependentUpon>201303102357548_SyncJournalItem-OperationTypeValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304191337581_AddFeedback.cs" />
+    <Compile Include="Migrations\201304191337581_AddFeedback.Designer.cs">
+      <DependentUpon>201304191337581_AddFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WebTrackerClientsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WebTrackerTrackingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SyncJournalInjection.cs" />
+    <Compile Include="SyncJournalReporter.cs" />
+    <Compile Include="SyncJournalUpdater.cs" />
+    <Compile Include="WebTrackerCommunication\ClientRegistration.cs" />
+    <Compile Include="WebTrackerCommunication\WebTrackerReporter.cs" />
+    <Compile Include="WebTrackerCommunication\WebTrackerUpdater.cs" />
+    <Compile Include="WorkspaceAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WebTrackerClientsService\CentralServiceCore.WebTrackerClientsService.ClientType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebTrackerClientsService\ClientsService.wsdl" />
+    <None Include="Service References\WebTrackerClientsService\ClientsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebTrackerClientsService\ClientsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebTrackerClientsService\ClientsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebTrackerTrackingService\CentralServiceCore.WebTrackerTrackingService.TrackingResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebTrackerTrackingService\CentralServiceCore.WebTrackerTrackingService.TrackingType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebTrackerTrackingService\CentralServiceCore.WebTrackerTrackingService.WebsiteUpdateType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebTrackerTrackingService\TrackingService.wsdl" />
+    <None Include="Service References\WebTrackerTrackingService\TrackingService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebTrackerTrackingService\TrackingService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebTrackerTrackingService\TrackingService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebTrackerTrackingService\TrackingService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201302251209461_InitDatabase.resx">
+      <DependentUpon>201302251209461_InitDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303032331543_ChangeColumnsTypeInSyncJournalItem.resx">
+      <DependentUpon>201303032331543_ChangeColumnsTypeInSyncJournalItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303042136253_ChangeColumnsToString.resx">
+      <DependentUpon>201303042136253_ChangeColumnsToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303081430215_ChangeClientIdTypeRenameSyncId.resx">
+      <DependentUpon>201303081430215_ChangeClientIdTypeRenameSyncId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303091258454_WebObjectsAccessLogs.resx">
+      <DependentUpon>201303091258454_WebObjectsAccessLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303091752140_WebObjectIsTracked.resx">
+      <DependentUpon>201303091752140_WebObjectIsTracked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303100025057_SyncJournalItemSyncWithType.resx">
+      <DependentUpon>201303100025057_SyncJournalItemSyncWithType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303101413370_AddClientCaches.resx">
+      <DependentUpon>201303101413370_AddClientCaches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303101714340_AddUidToClientCaches.resx">
+      <DependentUpon>201303101714340_AddUidToClientCaches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303102357548_SyncJournalItem-OperationTypeValue.resx">
+      <DependentUpon>201303102357548_SyncJournalItem-OperationTypeValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304191337581_AddFeedback.resx">
+      <DependentUpon>201304191337581_AddFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebTrackerClientsService\" />
+    <WCFMetadataStorage Include="Service References\WebTrackerTrackingService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerClientsService\ClientsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerClientsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerClientsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerClientsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerTrackingService\TrackingService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerTrackingService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerTrackingService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebTrackerTrackingService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

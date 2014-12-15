@@ -1,0 +1,45 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PhoneApp.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    Style="{StaticResource Transition}">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="OWNET" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="welcome" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Button Content="Login" Height="72" HorizontalAlignment="Left" Margin="0,182,0,0" Name="LoginBtn" VerticalAlignment="Top" Width="160" Click="LoginBtn_Click" />
+            <TextBlock Height="91" HorizontalAlignment="Left" Margin="6,6,0,0" Name="textBlock1" Text="OwNet is a project that makes the Internet more accessible in places with poor Internet connectivity." VerticalAlignment="Top" TextWrapping="Wrap" Width="444" />
+            <TextBlock Height="73" HorizontalAlignment="Left" Margin="6,103,0,0" Name="textBlock2" Text="This application is complementary to the OwNet applications available for Windows PCs." VerticalAlignment="Top" Width="444" TextWrapping="Wrap" />
+            <Button Content="Find out more" Height="72" HorizontalAlignment="Left" Margin="166,182,0,0" Name="FindOutMoreBtn" VerticalAlignment="Top" Width="214" Click="FindOutMoreBtn_Click" />
+        </Grid>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.feature.settings.rest.png" Text="Accounts" Click="ApplicationBarIconButton_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

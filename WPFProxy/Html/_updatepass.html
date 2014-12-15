@@ -1,0 +1,34 @@
+﻿			<h2 style="margin-top: 10px;">Change password</h2>
+            <div id="updateformdiv">
+			<form action="#" id="updateform">  
+                <input type="hidden" id="userid" name="userid" value="" />
+                <input type="hidden" id="username" name="username" value="" />
+				<table class="table_login" id="updateformtable">
+                	<tr>
+						<td class="table_header_reg"><strong>Username</strong></td>
+						<td class="table_content"><strong id="usernamestr"></strong></td>
+					</tr>
+					<tr id="oldpass">
+						<td class="table_header_reg"><strong>Old Password</strong></td>
+						<td class="table_content"><input type="password" name="password0" id="password0" class="input_register" value="" /><span class="tip_help" title="Enter your current password."></span></td>
+					</tr>
+					<tr>
+						<td class="table_header_reg"><strong>New Password</strong></td>
+						<td class="table_content"><input type="password" name="password1" id="password1" class="input_register" value="" /><span class="tip_help" title="Password protects your account to be accessed by users other than you. Choose the password you will easily remember. Enter word constructed from letters and numbers with minimum length of 4 and maximum length of 10 characters. If you forget your password, contact your teacher."></span></td>
+					</tr>
+					<tr>
+						<td class="table_header_reg"><strong>Confirm new password</strong></td>
+						<td class="table_content"><input type="password" name="password2" id="password2" class="input_register" value="" /></td>
+					</tr>
+
+					<tr>
+						<td class="table_header_reg">&nbsp;</td>
+						<td class="table_content">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="table_header_reg center" id="passloader"></td>
+						<td class="table_submit_reg"><input type="submit" class="button_login" onclick="confirm('Do you really want to change password?', function() {updatePassword(); }); return false;" value="Edit password" style="width: 200px;" /></td> 
+					</tr>
+				</table>
+			</form>
+			</div>

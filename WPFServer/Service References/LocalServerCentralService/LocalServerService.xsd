@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8451/v3/LocalServerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" />
+  <xs:complexType name="ReportLog">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" minOccurs="0" name="AccessLogs" nillable="true" type="q1:ArrayOfAccessLogReport" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" minOccurs="0" name="ActivityLogs" nillable="true" type="q2:ArrayOfActivityLogReport" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" minOccurs="0" name="GroupLogs" nillable="true" type="q3:ArrayOfGroupReport" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" minOccurs="0" name="GroupRecommendationLogs" nillable="true" type="q4:ArrayOfGroupRecommendationReport" />
+      <xs:element minOccurs="0" name="UserGroupReports" nillable="true" type="tns:ArrayOfUserGroupReport" />
+      <xs:element minOccurs="0" name="UserLogs" nillable="true" type="tns:ArrayOfUserReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportLog" nillable="true" type="tns:ReportLog" />
+  <xs:complexType name="ArrayOfUserGroupReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserGroupReport" nillable="true" type="tns:UserGroupReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserGroupReport" nillable="true" type="tns:ArrayOfUserGroupReport" />
+  <xs:complexType name="UserGroupReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserGroupReport" nillable="true" type="tns:UserGroupReport" />
+  <xs:complexType name="ArrayOfUserReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserReport" nillable="true" type="tns:UserReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserReport" nillable="true" type="tns:ArrayOfUserReport" />
+  <xs:complexType name="UserReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordSalt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserReport" nillable="true" type="tns:UserReport" />
+</xs:schema>

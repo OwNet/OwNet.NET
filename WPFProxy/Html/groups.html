@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Groups</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+    <base href="http://my.ownet/" />
+<!--	<link rel="stylesheet" type="text/css" href="css/starrating.css" media="screen"/>-->
+	<link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+
+	 <script type="text/javascript" src='js/jquery.js'></script> 
+	
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script> 
+
+    <!-- autocomplete js -->
+    <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <!-- qTip -->
+	<script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+
+	
+	<!-- Hlavne CSS musi byt napisane ako posledne CSS -->
+	<link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+	
+   
+	<script type="text/javascript" src="js/functions.js"></script> 
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script> 
+   
+   <!-- tab links -->
+   <script type="text/javascript">
+        $(function () {
+            $("#tab-links").organicTabs({ "speed": 250 });
+        });
+        $(document).ready(function () {
+            // otvorime tooltip pre danu sekcii
+            OwnetTooltip("groups");
+        
+        });
+    </script>  
+
+    <!-- autocomplete -->
+   <style>
+	.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
+	</style>
+	
+    <script type="text/javascript">
+	    $(function () {
+
+	        $("#autocompleteGroups").autocomplete({
+	            source: "group/autocomplete/",
+	            minLength: 2,
+	            select: function (event, ui) {
+	                if (ui.item) window.location.replace("group/show/?group=" + ui.item.value );
+					/*"Selected: " + ui.item.value + " aka " + ui.item.id :
+					log("Nothing selected, input was " + this.value));*/
+	            }
+	        });
+	    });
+	</script>
+
+
+    <!-- uvodny ajax -->
+     <script type="text/javascript">
+         // uvodna nacitanie prvej stranky, nemusi byt cez ajax, ale rovno "na tvrdo"
+         $(document).ready(function () { TabLoad('groups', 'group/list/?all=0'); });
+	</script> 
+
+</head>
+<body>
+
+
+<div id="content">
+	<div id="page-top-lath"></div>
+	
+    <div id="page">
+	
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+		
+		</div>
+	   
+       
+        <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close"></div>
+			<strong>GROUPS</strong> » Here you can see user groups.
+		</div>
+
+        
+
+		
+		<!-- Groups -->
+
+        <!-- My & All Groups -->
+        <div id="tab-links">
+			<ul class="nav cleaner">
+				<li class="nav-category"><a href="#groups" class="current" onclick="TabLoad('groups', 'group/list/?all=0');"><strong>My groups</strong></a></li>
+				<li class="nav-category"><a href="#groups_all" onclick="TabLoad('groups_all', 'group/list/?all=1');"><strong>All groups</strong></a></li>
+                
+			</ul>
+            
+            
+                
+			<h1><img class="img-7" alt="" src="graphics/group.png"/> Groups</h1>
+			<div class="clear"></div>	
+
+			 <!-- AutoComplete groups -->
+                    <div class="autocomplete" style="margin-left: 455px;">
+                       
+                        <div class="ui-widget">
+                            <a href="group/create"><strong style="font-size: 1.1em">Create a group</strong></a> |
+	                        <label for="autocompleteGroups">Find a group: </label>
+	                        <input id="autocompleteGroups" />
+                        </div>
+
+                       <!--  <div class="ui-widget" style="margin-top:2em; font-family:Arial">
+	                        Result:
+	                        <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+                        </div> -->
+
+                    </div><!-- End demo --> 
+
+			<div id="groups"><div class="ajax_loader"></div></div> 
+            <div id="groups_all" class="hide"><div class="ajax_loader"></div></div>
+			
+	    </div>
+
+      </div>
+
+	<!-- Footer of page -->
+		<div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>

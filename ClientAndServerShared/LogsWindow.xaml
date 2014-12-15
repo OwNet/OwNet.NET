@@ -1,0 +1,24 @@
+﻿<Window x:Class="ClientAndServerShared.LogsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OwNet - Logs" Height="445" Width="557">
+    <Grid>
+        <TabControl Margin="12" Name="tabControl">
+            <TabItem Header="Messages" Name="tabItemMessages" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid>
+                    <ListBox VirtualizingStackPanel.IsVirtualizing="True" Margin="6" Name="listMessages"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Exceptions" Name="tabItemExceptions" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid>
+                    <ListBox VirtualizingStackPanel.IsVirtualizing="True" Margin="6" Name="listExceptions"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Access logs" Name="tabItemAccessLogs">
+                <Grid>
+                    <ListBox VirtualizingStackPanel.IsVirtualizing="True" Margin="6" Name="listAccessLogs" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

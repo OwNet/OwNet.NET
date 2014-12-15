@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>OwNet | Create Group</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="robots" content="all, follow" />
+    <meta name="author" content="5ML team" />
+    <base href="http://my.ownet/" />
+    <!--	<link rel="stylesheet" type="text/css" href="css/starrating.css" media="screen"/>-->
+    <link rel="shortcut icon" href="favicon.png" type="image/ico" />
+    <link rel="icon" href="favicon.png" />
+    <script type="text/javascript" src='js/jquery.js'></script>
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css"
+        media="screen" />
+    <!-- qTip -->
+    <script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+    <!-- Hlavne CSS musi byt napisane ako posledne CSS -->
+    <link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen" />
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+    <script type="text/javascript"><!--
+        $(function () {
+            $("#tab-links").organicTabs({ "speed": 250 });
+        });
+        $(document).ready(function () {
+            // otvorime tooltip pre danu sekcii
+            OwnetTooltip("groups");
+
+        });
+        
+        
+    --></script>
+</head>
+<body>
+    <div id="content">
+        <div id="page-top-lath">
+        </div>
+        <div id="page">
+            <!-- Menu of page -->
+            <div id="menubar" class="cleaner">
+            </div>
+            <!-- Create Group -->
+            <div id="ownet-tooltip">
+                <div class="ownet-tooltip-close">
+                    <img src="graphics/close_orange.png" alt="Close" title="Permanently close"></div>
+                <strong>GROUPS</strong> » Here you can create your own user group.
+            </div>
+            <div id="tab-links">
+                <h1><img class="img-7" alt="" src="graphics/group.png" />Create Group</h1>
+                <!-- Create group form -->
+                <form action="group/create" method="post" id="send_message_form">
+                <table class="table_login">
+                    <tr>
+                        <td class="table_header_reg">
+                            <strong>Name</strong> <span class="tip_help" title="Name identifies your group. Name may contain letters numbers and spaces only. Minimum length is 3 characters."></span>
+                        </td>
+                        <td class="table_content">
+                            <input type="text" name="name" id="name" class="input_register" style="width: 70%;" />
+                            &nbsp; <span id="nameInfo"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_header_reg">
+                            <strong>Description</strong>
+                        </td>
+                        <td class="table_content">
+                            <textarea rows="2" cols="80" name="description" id="desc" class="input" style="height: 70px;
+                                width: 70%; font-size: 12px;"></textarea><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_header_reg">
+                            <strong>Tags</strong> <span class="tip_help" title="Tags are words which describe your group. Separate the tags by comma."></span>
+                        </td>
+                        <td class="table_content">
+                            <input type="text" id="tags" name="tags" class="input_register" style="width: 70%;" />
+                            <br />
+                            <span id="tagsInfo"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_submit_reg" colspan="2">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_header_reg">
+                            <strong>Type</strong> <span class="tip_help" title="Choose type of your new group. Local group will be visible only on your school. Global group will be visible on all schools with OwNet."></span>
+                        </td>
+                        <td class="table_content">
+                            <input type="radio" id="loc" name="location" value="global" />
+                            Global
+                            <input name="location" type="radio" value="local" checked="checked" />
+                            Local
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_submit_reg" colspan="2">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_submit_reg" colspan="2">
+                            <input name="submit-group" id="submit_button" type="submit" class="button_login"
+                                value="Create group" />
+                        </td>
+                    </tr>
+                </table>
+                </form>
+            </div>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+
+                    var name = $("#name");
+                    var desc = $("#desc");
+                    var tags = $("#tags");
+                    var nameInfo = $("#nameInfo");
+                    var tagsInfo = $("#tagsInfo");
+                    var validName = false;
+                    var validTags = true;
+
+                    function validateName() {
+                        $.ajax({
+                            type: "GET",
+                            // tu zavolame kontrolu mena
+                            url: "http://my.ownet/group/validate_name/?name=" + encodeURIComponent(name.val()),
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data["status"] === "OK") {
+                                    name.removeClass("error");
+                                    nameInfo.text("");
+                                    nameInfo.removeClass("error");
+                                    validName = true;
+                                }
+                                else if (data["status"] === "NAME") {
+                                    name.addClass("error");
+                                    nameInfo.text("This group name is already taken!");
+                                    nameInfo.addClass("error");
+                                    validName = false;
+                                }
+                                else if (data["status"] === "FAIL") {
+                                    name.addClass("error");
+                                    nameInfo.text("The name is too short!");
+                                    nameInfo.addClass("error");
+                                    validName = false;
+                                }
+                                else if (data["status"] == "CHARS") {
+                                    name.addClass("error");
+                                    nameInfo.text("The name contains unsupported characters!");
+                                    nameInfo.addClass("error");
+                                    validName = false;
+                                }
+                            }
+                        });
+                    }
+
+                    function validateTags() {
+                        $.ajax({
+                            type: "GET",
+                            url: "http://my.ownet/group/validate_tags/?tags=" + encodeURIComponent(tags.val()),
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data["status"] === "OK") {
+                                    tags.removeClass("error");
+                                    tagsInfo.text("");
+                                    tagsInfo.removeClass("error");
+                                    validTags = true;
+                                }
+                                else {
+                                    tags.addClass("error");
+                                    tagsInfo.text("The tags contain unsupported characters!");
+                                    tagsInfo.addClass("error");
+                                    validTags = false;
+                                }
+                            }
+                        });
+                    }
+
+                    function validateCreate() {
+                        if (validName && validTags)
+                            $("#submit_button").prop('disabled', false);
+                        else
+                            $("#submit_button").prop('disabled', true);
+                    }
+
+                    function validateAllName() {
+                        validateName();
+                        validateCreate();
+                    }
+
+                    function validateAllTags() {
+                        validateTags();
+                        validateCreate();
+                    }
+
+                    name.blur(validateAllName);
+                    name.keyup(validateAllName);
+
+                    tags.blur(validateAllTags);
+                    tags.keyup(validateAllTags);
+                });
+            </script>
+
+            <!-- Footer of page -->
+            <div id="footer">
+            </div>
+            <div id="footerbar" class="cleaner">
+                <div class="left">
+                    © 2012 OwNet</div>
+                <div class="right">
+                    <a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> | <a
+                        href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> | <a href="http://ownet.fiit.stuba.sk/contact.php"
+                            target="_blank">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

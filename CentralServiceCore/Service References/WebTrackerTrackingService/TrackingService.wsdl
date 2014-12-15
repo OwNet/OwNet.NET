@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TrackingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TrackerServices" />
+      <xsd:import schemaLocation="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITrackingService_TrackNewWebsite_InputMessage">
+    <wsdl:part name="parameters" element="tns:TrackNewWebsite" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_TrackNewWebsite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TrackNewWebsiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListTrackings_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListTrackings" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListTrackings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListTrackingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListAllUpdates_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListAllUpdates" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListAllUpdates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListAllUpdatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListWebsiteUpdates_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListWebsiteUpdates" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListWebsiteUpdates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListWebsiteUpdatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_TrackWebsites_InputMessage">
+    <wsdl:part name="parameters" element="tns:TrackWebsites" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_TrackWebsites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TrackWebsitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_UntrackWebsites_InputMessage">
+    <wsdl:part name="parameters" element="tns:UntrackWebsites" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_UntrackWebsites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UntrackWebsitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListChangedWebsites_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListChangedWebsites" />
+  </wsdl:message>
+  <wsdl:message name="ITrackingService_ListChangedWebsites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListChangedWebsitesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITrackingService">
+    <wsdl:operation name="TrackNewWebsite">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITrackingService/TrackNewWebsite" message="tns:ITrackingService_TrackNewWebsite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITrackingService/TrackNewWebsiteResponse" message="tns:ITrackingService_TrackNewWebsite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListTrackings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITrackingService/ListTrackings" message="tns:ITrackingService_ListTrackings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITrackingService/ListTrackingsResponse" message="tns:ITrackingService_ListTrackings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListAllUpdates">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITrackingService/ListAllUpdates" message="tns:ITrackingService_ListAllUpdates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITrackingService/ListAllUpdatesResponse" message="tns:ITrackingService_ListAllUpdates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListWebsiteUpdates">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITrackingService/ListWebsiteUpdates" message="tns:ITrackingService_ListWebsiteUpdates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITrackingService/ListWebsiteUpdatesResponse" message="tns:ITrackingService_ListWebsiteUpdates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TrackWebsites">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITrackingService/TrackWebsites" message="tns:ITrackingService_TrackWebsites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITrackingService/TrackWebsitesResponse" message="tns:ITrackingService_TrackWebsites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UntrackWebsites">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITrackingService/UntrackWebsites" message="tns:ITrackingService_UntrackWebsites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITrackingService/UntrackWebsitesResponse" message="tns:ITrackingService_UntrackWebsites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListChangedWebsites">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITrackingService/ListChangedWebsites" message="tns:ITrackingService_ListChangedWebsites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITrackingService/ListChangedWebsitesResponse" message="tns:ITrackingService_ListChangedWebsites_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITrackingService" type="tns:ITrackingService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TrackNewWebsite">
+      <soap:operation soapAction="http://tempuri.org/ITrackingService/TrackNewWebsite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListTrackings">
+      <soap:operation soapAction="http://tempuri.org/ITrackingService/ListTrackings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAllUpdates">
+      <soap:operation soapAction="http://tempuri.org/ITrackingService/ListAllUpdates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListWebsiteUpdates">
+      <soap:operation soapAction="http://tempuri.org/ITrackingService/ListWebsiteUpdates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrackWebsites">
+      <soap:operation soapAction="http://tempuri.org/ITrackingService/TrackWebsites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UntrackWebsites">
+      <soap:operation soapAction="http://tempuri.org/ITrackingService/UntrackWebsites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListChangedWebsites">
+      <soap:operation soapAction="http://tempuri.org/ITrackingService/ListChangedWebsites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TrackingService">
+    <wsdl:port name="BasicHttpBinding_ITrackingService" binding="tns:BasicHttpBinding_ITrackingService">
+      <soap:address location="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

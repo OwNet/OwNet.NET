@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="74b7104b-c124-4aa9-82be-c5c9203e3783" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8451/v3/PhoneAppService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PhoneAppService.xsd" MetadataType="Schema" ID="9573bbe2-de40-4e33-b97d-2bd5c416220e" SourceId="1" SourceUrl="http://localhost:8451/v3/PhoneAppService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PhoneAppService1.xsd" MetadataType="Schema" ID="0ced940e-4d99-4555-96bf-482a7129cfba" SourceId="1" SourceUrl="http://localhost:8451/v3/PhoneAppService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PhoneAppService2.xsd" MetadataType="Schema" ID="30d79be9-2a40-47c0-918c-1a2c11d59890" SourceId="1" SourceUrl="http://localhost:8451/v3/PhoneAppService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PhoneAppService.disco" MetadataType="Disco" ID="c6b753b4-368c-4081-b828-424abdc0cb6c" SourceId="1" SourceUrl="http://localhost:8451/v3/PhoneAppService.svc?disco" />
+    <MetadataFile FileName="PhoneAppService.wsdl" MetadataType="Wsdl" ID="f51adadf-5397-4f98-9565-d20a3bd772cc" SourceId="1" SourceUrl="http://localhost:8451/v3/PhoneAppService.svc?wsdl" />
+    <MetadataFile FileName="PhoneAppService3.xsd" MetadataType="Schema" ID="3ab11c36-cbaa-41aa-accd-0d9b9912de51" SourceId="1" SourceUrl="http://localhost:8451/v3/PhoneAppService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PhoneAppService4.xsd" MetadataType="Schema" ID="d3f18ae2-28b0-45f6-80d9-e40ac3f98901" SourceId="1" SourceUrl="http://localhost:8451/v3/PhoneAppService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Recommendations</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+	<base href="http://my.ownet/" />
+	<link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+
+	<link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+
+	<script type="text/javascript" src='js/jquery.js'></script>
+
+    <!-- autocomplete js -->
+    <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.20.custom.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+    	
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <!-- qTip -->
+    <script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+     <script type="text/javascript"><!--
+         $(function () {
+             $("#tab-links").organicTabs({ "speed": 250 });
+         });
+
+         $(document).ready(function () {
+             // otvorime tooltip pre danu sekcii
+             OwnetTooltip("Group");
+         });
+
+         $(function () {
+             $("#autocompleteGroups").autocomplete({
+                 source: "group/autocomplete/",
+                 minLength: 2,
+                 select: function (event, ui) {
+                     if (ui.item)
+                         window.location.replace("group/show/?group=" + ui.item.value);
+                 }
+             });
+         });
+    --></script>
+
+    <!-- autocomplete -->
+   <style>
+	.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
+	</style>
+	
+    <!--
+    <script type="text/javascript">
+        $(function () {
+
+            $("#autocompleteGroups").autocomplete({
+                source: "group/autocomplete/",
+                minLength: 2,
+                select: function (event, ui) {
+                    if (ui.item) window.location.replace("group/show/?group=" + ui.item.value );//TabLoad('autocomplete', 'group/recommended/?group=' + ui.item.value);
+                    /*"Selected: " + ui.item.value + " aka " + ui.item.id :
+                    log("Nothing selected, input was " + this.value));*/
+                }
+            });
+        });
+	</script> -->
+
+</head>
+
+<body>
+<div id="content">
+	<div id="page-top-lath"></div>
+	<div id="page">
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+
+
+		</div>
+		
+        <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close" /></div>
+			<strong>RECOMMENDATIONS</strong> » Here you can see websites recommended by OwNet users, divided by groups.
+		</div>
+
+
+		<!-- Tab links -->
+        <div id="tab-links" style="font-size: 12px;">
+			<ul class="nav" id ="nav_groups">
+                <li class="nav-category"><a href="#recent" class="current" onclick="TabLoad('recent', 'recommend/list/recent');"><strong>Most Recent</strong></a></li>
+                <!--<li class="nav-category"><a href="#school" onclick="TabLoad('school', 'recommend/list/group/school?page=1');"><strong>School</strong></a></li>
+                <li class="nav-category"><a href="#entertainment" onclick="TabLoad('entertainment', 'recommend/list/group/entertainment?page=1');"><strong>Entertainment</strong></a></li>
+				<li class="last"><span><strong>More</strong> <img src="graphics/more.png" alt="" /></span>
+					<ul class="cleaner">
+                        <li class="nav-category"><a href="#sport" onclick="TabLoad('sport', 'recommend/list/group/sport?page=1');"><strong>Sport</strong></a></li>
+                        <li class="nav-category"><a href="#news" onclick="TabLoad('news', 'recommend/list/group/news?page=1');"><strong>News</strong></a></li>
+                        <li class="nav-category"><a href="#other" onclick="TabLoad('other', 'recommend/list/group/other?page=1');"><strong>Other</strong></a></li>
+					</ul>			
+				</li> -->
+            </ul>
+        	<h1><img src="graphics/world.png" class="img-7" alt=""/> Recommendations</h1>
+			<div class="clear"></div>
+			<!-- Text Resize -->
+			<div class="right">
+               <div class="autocomplete" style="margin-left: 400px; float: left;">
+                       
+                    <div class="ui-widget">
+                        <a href="group/"><strong>All Groups</strong></a> |
+                        <label for="autocompleteGroups">Find a group: </label>
+                        <input id="autocompleteGroups" />
+                    </div>
+                </div> 
+
+            </div>
+            <div class="clear"></div>
+
+          
+
+            <!-- TOP News -->
+			<script type="text/javascript">
+			    // uvodna nacitanie prvej stranky, nemusi byt cez ajax, ale rovno "na tvrdo"
+			    $(document).ready(function () { TabLoad('recent', 'recommend/list/recent'); });
+			</script>
+			<div id="recent"><div class="ajax_loader"></div></div>
+			
+			<div id="group1" class="hide"><div class="ajax_loader"></div></div>
+			<div id="group2" class="hide"><div class="ajax_loader"></div></div>
+            <div id="group3" class="hide"><div class="ajax_loader"></div></div>
+			<div id="group4" class="hide"><div class="ajax_loader"></div></div>
+
+            
+			
+         </div>			
+	</div>
+	
+	<!-- Footer of page -->
+		<div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>

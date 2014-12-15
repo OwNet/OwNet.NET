@@ -1,0 +1,303 @@
+<<<<<<< HEAD
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 05/03/2012 20:08:52
+-- Generated from EDMX file: C:\Users\Matus\Documents\Visual Studio 2010\Projects\WPFProxy\WPFProxy\Database.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    ALTER TABLE [CacheHeaders] DROP CONSTRAINT [FK_CacheHeaders_Caches];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [Blacklist];
+GO
+    DROP TABLE [CacheHeaders];
+GO
+    DROP TABLE [Caches];
+GO
+    DROP TABLE [Users];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Blacklist'
+CREATE TABLE [Blacklist] (
+    [RegularExpression] nvarchar(4000)  NULL,
+    [CacheOnServer] int  NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Title] nvarchar(4000)  NULL
+);
+GO
+
+-- Creating table 'CacheHeaders'
+CREATE TABLE [CacheHeaders] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Key] nvarchar(4000)  NULL,
+    [Value] nvarchar(4000)  NULL,
+    [CacheId] int  NOT NULL
+);
+GO
+
+-- Creating table 'Caches'
+CREATE TABLE [Caches] (
+    [ID] int  NOT NULL,
+    [AbsoluteUri] nvarchar(4000)  NOT NULL,
+    [UserAgent] nvarchar(400)  NULL,
+    [Expires] datetime  NULL,
+    [StatusCode] int  NULL,
+    [DateStored] datetime  NULL,
+    [StatusDescription] nvarchar(100)  NULL,
+    [CharacterSet] nvarchar(100)  NULL,
+    [ContentType] nvarchar(100)  NULL,
+    [AccessNum] bigint  NOT NULL,
+    [AccessCount] int  NULL,
+    [AccessValue] float  NULL,
+    [DateModified] datetime  NULL
+);
+GO
+
+-- Creating table 'Users'
+CREATE TABLE [Users] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [FirstName] nvarchar(100)  NOT NULL,
+    [Surname] nvarchar(100)  NOT NULL,
+    [Mail] nvarchar(100)  NULL,
+    [Current] int  NOT NULL
+);
+GO
+
+-- Creating table 'CacheUpdateSet'
+CREATE TABLE [CacheUpdateSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [CacheId] nvarchar(4000)  NOT NULL,
+    [DateCreated] nvarchar(4000)  NOT NULL,
+    [Priority] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'Blacklist'
+ALTER TABLE [Blacklist]
+ADD CONSTRAINT [PK_Blacklist]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [ID] in table 'CacheHeaders'
+ALTER TABLE [CacheHeaders]
+ADD CONSTRAINT [PK_CacheHeaders]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [ID] in table 'Caches'
+ALTER TABLE [Caches]
+ADD CONSTRAINT [PK_Caches]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [ID] in table 'Users'
+ALTER TABLE [Users]
+ADD CONSTRAINT [PK_Users]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [Id] in table 'CacheUpdateSet'
+ALTER TABLE [CacheUpdateSet]
+ADD CONSTRAINT [PK_CacheUpdateSet]
+    PRIMARY KEY ([Id] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [CacheId] in table 'CacheHeaders'
+ALTER TABLE [CacheHeaders]
+ADD CONSTRAINT [FK_CacheHeaders_Caches]
+    FOREIGN KEY ([CacheId])
+    REFERENCES [Caches]
+        ([ID])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CacheHeaders_Caches'
+CREATE INDEX [IX_FK_CacheHeaders_Caches]
+ON [CacheHeaders]
+    ([CacheId]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+=======
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 05/04/2012 08:35:03
+-- Generated from EDMX file: D:\Projekty\IC\wpfproxy\WPFProxy\Database.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    ALTER TABLE [CacheHeaders] DROP CONSTRAINT [FK_CacheHeaders_Caches];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [Blacklist];
+GO
+    DROP TABLE [CacheHeaders];
+GO
+    DROP TABLE [Caches];
+GO
+    DROP TABLE [Users];
+GO
+    DROP TABLE [PrefetchOrders];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Blacklist'
+CREATE TABLE [Blacklist] (
+    [RegularExpression] nvarchar(4000)  NULL,
+    [CacheOnServer] int  NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Title] nvarchar(4000)  NULL
+);
+GO
+
+-- Creating table 'CacheHeaders'
+CREATE TABLE [CacheHeaders] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Key] nvarchar(4000)  NULL,
+    [Value] nvarchar(4000)  NULL,
+    [CacheId] int  NOT NULL
+);
+GO
+
+-- Creating table 'Caches'
+CREATE TABLE [Caches] (
+    [ID] int  NOT NULL,
+    [AbsoluteUri] nvarchar(4000)  NOT NULL,
+    [UserAgent] nvarchar(400)  NULL,
+    [Expires] datetime  NULL,
+    [StatusCode] int  NULL,
+    [DateStored] datetime  NULL,
+    [StatusDescription] nvarchar(100)  NULL,
+    [CharacterSet] nvarchar(100)  NULL,
+    [ContentType] nvarchar(100)  NULL,
+    [AccessNum] bigint  NOT NULL,
+    [AccessCount] int  NULL,
+    [AccessValue] float  NULL,
+    [DateModified] datetime  NULL
+);
+GO
+
+-- Creating table 'Users'
+CREATE TABLE [Users] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [FirstName] nvarchar(100)  NOT NULL,
+    [Surname] nvarchar(100)  NOT NULL,
+    [Mail] nvarchar(100)  NULL,
+    [Current] int  NOT NULL
+);
+GO
+
+-- Creating table 'PrefetchOrders'
+CREATE TABLE [PrefetchOrders] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [FromTitle] nvarchar(4000)  NOT NULL,
+    [FromAbsoluteUri] nvarchar(4000)  NOT NULL,
+    [ToTitle] nvarchar(4000)  NOT NULL,
+    [ToAbsoluteUri] nvarchar(4000)  NOT NULL,
+    [DateCreated] datetime  NOT NULL,
+    [Enabled] bit  NOT NULL,
+    [Completed] bit  NOT NULL,
+    [DateCompleted] datetime  NULL,
+    [Priority] tinyint  NOT NULL,
+    [Attempts] tinyint  NOT NULL,
+    [Status] tinyint  NOT NULL,
+    [IsScheduled] bit  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'Blacklist'
+ALTER TABLE [Blacklist]
+ADD CONSTRAINT [PK_Blacklist]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [ID] in table 'CacheHeaders'
+ALTER TABLE [CacheHeaders]
+ADD CONSTRAINT [PK_CacheHeaders]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [ID] in table 'Caches'
+ALTER TABLE [Caches]
+ADD CONSTRAINT [PK_Caches]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [ID] in table 'Users'
+ALTER TABLE [Users]
+ADD CONSTRAINT [PK_Users]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [Id] in table 'PrefetchOrders'
+ALTER TABLE [PrefetchOrders]
+ADD CONSTRAINT [PK_PrefetchOrders]
+    PRIMARY KEY ([Id] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [CacheId] in table 'CacheHeaders'
+ALTER TABLE [CacheHeaders]
+ADD CONSTRAINT [FK_CacheHeaders_Caches]
+    FOREIGN KEY ([CacheId])
+    REFERENCES [Caches]
+        ([ID])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CacheHeaders_Caches'
+CREATE INDEX [IX_FK_CacheHeaders_Caches]
+ON [CacheHeaders]
+    ([CacheId]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+>>>>>>> stable
+-- --------------------------------------------------

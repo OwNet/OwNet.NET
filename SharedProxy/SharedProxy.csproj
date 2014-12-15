@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{62C7C7E6-5925-4C0C-B32A-C876DB740595}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharedProxy</RootNamespace>
+    <AssemblyName>SharedProxy</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\WPFProxy\References\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Http">
+      <HintPath>..\WPFProxy\References\RestStarterKit\Microsoft.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Http.Extensions">
+      <HintPath>..\WPFProxy\References\RestStarterKit\Microsoft.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceModel.Web">
+      <HintPath>..\WPFProxy\References\RestStarterKit\Microsoft.ServiceModel.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Proxy\ProxyEntry.cs" />
+    <Compile Include="Cache\CacheEntrySaver.cs" />
+    <Compile Include="Cache\CacheFile.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Proxy\IProxyInstance.cs" />
+    <Compile Include="Jobs.cs" />
+    <Compile Include="MessageWriter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Cache\GDSFClock.cs" />
+    <Compile Include="Proxy\ProxyTraffic.cs" />
+    <Compile Include="ServerRequestManager.cs" />
+    <Compile Include="Service References\MainServerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.datasvcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Client\CacheServiceRequester.cs" />
+    <Compile Include="Services\Host\ClientCacheService.cs" />
+    <Compile Include="Services\Host\IClientCacheService.cs" />
+    <Compile Include="Services\Host\IProxyDataService.cs" />
+    <Compile Include="Services\Host\ServiceHost.cs" />
+    <Compile Include="Services\Host\ProxyService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Host\ProxyServiceStreamProvider.cs" />
+    <Compile Include="Services\Host\Service.cs" />
+    <Compile Include="Streams\Input\DataServiceStreamItem.cs" />
+    <Compile Include="Streams\Input\DirectDataServiceStreamItem.cs" />
+    <Compile Include="Streams\Input\DirectWebStreamItem.cs" />
+    <Compile Include="Streams\Input\InMemoryStreamItem.cs" />
+    <Compile Include="Streams\ProxyStreamManager.cs" />
+    <Compile Include="Streams\Input\CacheStreamItem.cs" />
+    <Compile Include="Streams\Input\StreamItem.cs" />
+    <Compile Include="Streams\Input\WebStreamItem.cs" />
+    <Compile Include="Streams\Output\CacheWriter.cs" />
+    <Compile Include="Streams\Output\ServiceItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientAndServerShared\ClientAndServerShared.csproj">
+      <Project>{A5999831-5C5C-43BA-AE0D-71014DD905D5}</Project>
+      <Name>ClientAndServerShared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{648E9757-9666-4287-A8FD-C6588F3BB320}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceEntities\ServiceEntities.csproj">
+      <Project>{C30F94F0-5643-4EE3-9220-12CEF999AB21}</Project>
+      <Name>ServiceEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\MainServerService\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Properties\DataSources\SharedProxy.MainServerService.ProxyServiceContextEntities.datasource" />
+    <None Include="Service References\MainServerService\service.edmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MainServerService\Reference.datasvcmap">
+      <Generator>DataServiceClientGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

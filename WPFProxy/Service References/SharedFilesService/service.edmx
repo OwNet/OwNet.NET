@@ -1,0 +1,722 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="WPFServer.DatabaseContext" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityType Name="Page">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="AbsoluteURI" Type="Edm.String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+        <Property Name="Title" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Visitors" Relationship="WPFServer.DatabaseContext.UserVisitsPage_Page" ToRole="UserVisitsPage_Page_Source" FromRole="UserVisitsPage_Page_Target" />
+        <NavigationProperty Name="Recommendation" Relationship="WPFServer.DatabaseContext.UserRecommendsPageInGroup_Page" ToRole="UserRecommendsPageInGroup_Page_Source" FromRole="UserRecommendsPageInGroup_Page_Target" />
+        <NavigationProperty Name="Tags" Relationship="WPFServer.DatabaseContext.TagPage_Page" ToRole="TagPage_Page_Source" FromRole="TagPage_Page_Target" />
+        <NavigationProperty Name="Activities" Relationship="WPFServer.DatabaseContext.Activity_Page" ToRole="Activity_Page_Source" FromRole="Activity_Page_Target" />
+        <NavigationProperty Name="EdgesFrom" Relationship="WPFServer.DatabaseContext.Edge_PageFrom" ToRole="Edge_PageFrom_Source" FromRole="Edge_PageFrom_Target" />
+        <NavigationProperty Name="EdgesTo" Relationship="WPFServer.DatabaseContext.Edge_PageTo" ToRole="Edge_PageTo_Source" FromRole="Edge_PageTo_Target" />
+        <NavigationProperty Name="Predictions" Relationship="WPFServer.DatabaseContext.Prediction_Page" ToRole="Prediction_Page_Source" FromRole="Prediction_Page_Target" />
+      </EntityType>
+      <EntityType Name="UserVisitsPage">
+        <Key>
+          <PropertyRef Name="UserId" />
+          <PropertyRef Name="PageId" />
+        </Key>
+        <Property Name="UserId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PageId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Rating" Type="Edm.Int32" />
+        <Property Name="Count" Type="Edm.Int32" Nullable="false" />
+        <Property Name="VisitedAt" Type="Edm.DateTime" />
+        <Property Name="RatedAt" Type="Edm.DateTime" />
+        <Property Name="EstimatedRating" Type="Edm.Double" />
+        <NavigationProperty Name="User" Relationship="WPFServer.DatabaseContext.UserVisitsPage_User" ToRole="UserVisitsPage_User_Target" FromRole="UserVisitsPage_User_Source" />
+        <NavigationProperty Name="Page" Relationship="WPFServer.DatabaseContext.UserVisitsPage_Page" ToRole="UserVisitsPage_Page_Target" FromRole="UserVisitsPage_Page_Source" />
+      </EntityType>
+      <EntityType Name="User">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Firstname" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Surname" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Email" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="GenderValue" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PasswordHash" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="PasswordSalt" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="IsTeacher" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="LastVisit" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="LastLogin" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Registered" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Visits" Relationship="WPFServer.DatabaseContext.UserVisitsPage_User" ToRole="UserVisitsPage_User_Source" FromRole="UserVisitsPage_User_Target" />
+        <NavigationProperty Name="Traverses" Relationship="WPFServer.DatabaseContext.UserTraversesEdge_User" ToRole="UserTraversesEdge_User_Source" FromRole="UserTraversesEdge_User_Target" />
+        <NavigationProperty Name="Recommendations" Relationship="WPFServer.DatabaseContext.UserRecommendsPageInGroup_User" ToRole="UserRecommendsPageInGroup_User_Source" FromRole="UserRecommendsPageInGroup_User_Target" />
+        <NavigationProperty Name="Activities" Relationship="WPFServer.DatabaseContext.Activity_User" ToRole="Activity_User_Source" FromRole="Activity_User_Target" />
+        <NavigationProperty Name="SharedFiles" Relationship="WPFServer.DatabaseContext.SharedFile_User" ToRole="SharedFile_User_Source" FromRole="SharedFile_User_Target" />
+        <NavigationProperty Name="LeftNeighbors" Relationship="WPFServer.DatabaseContext.UserSimilarity_UserRight" ToRole="UserSimilarity_UserRight_Source" FromRole="UserSimilarity_UserRight_Target" />
+        <NavigationProperty Name="RightNeighbors" Relationship="WPFServer.DatabaseContext.UserSimilarity_UserLeft" ToRole="UserSimilarity_UserLeft_Source" FromRole="UserSimilarity_UserLeft_Target" />
+        <NavigationProperty Name="Predictions" Relationship="WPFServer.DatabaseContext.Prediction_User" ToRole="Prediction_User_Source" FromRole="Prediction_User_Target" />
+      </EntityType>
+      <EntityType Name="UserTraversesEdge">
+        <Key>
+          <PropertyRef Name="UserId" />
+          <PropertyRef Name="EdgeId" />
+        </Key>
+        <Property Name="UserId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EdgeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Frequency" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TimeStamp" Type="Edm.DateTime" />
+        <Property Name="EstimatedFrequency" Type="Edm.Double" />
+        <NavigationProperty Name="Edge" Relationship="WPFServer.DatabaseContext.UserTraversesEdge_Edge" ToRole="UserTraversesEdge_Edge_Target" FromRole="UserTraversesEdge_Edge_Source" />
+        <NavigationProperty Name="User" Relationship="WPFServer.DatabaseContext.UserTraversesEdge_User" ToRole="UserTraversesEdge_User_Target" FromRole="UserTraversesEdge_User_Source" />
+      </EntityType>
+      <EntityType Name="Edge">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="PageFromId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PageToId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="PageFrom" Relationship="WPFServer.DatabaseContext.Edge_PageFrom" ToRole="Edge_PageFrom_Target" FromRole="Edge_PageFrom_Source" />
+        <NavigationProperty Name="PageTo" Relationship="WPFServer.DatabaseContext.Edge_PageTo" ToRole="Edge_PageTo_Target" FromRole="Edge_PageTo_Source" />
+        <NavigationProperty Name="Traverses" Relationship="WPFServer.DatabaseContext.UserTraversesEdge_Edge" ToRole="UserTraversesEdge_Edge_Source" FromRole="UserTraversesEdge_Edge_Target" />
+      </EntityType>
+      <EntityType Name="UserRecommendsPageInGroup">
+        <Key>
+          <PropertyRef Name="PageId" />
+        </Key>
+        <Property Name="PageId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PageGroupId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="UserId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Title" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="DateTime" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="PageGroup" Relationship="WPFServer.DatabaseContext.UserRecommendsPageInGroup_PageGroup" ToRole="UserRecommendsPageInGroup_PageGroup_Target" FromRole="UserRecommendsPageInGroup_PageGroup_Source" />
+        <NavigationProperty Name="User" Relationship="WPFServer.DatabaseContext.UserRecommendsPageInGroup_User" ToRole="UserRecommendsPageInGroup_User_Target" FromRole="UserRecommendsPageInGroup_User_Source" />
+        <NavigationProperty Name="Page" Relationship="WPFServer.DatabaseContext.UserRecommendsPageInGroup_Page" ToRole="UserRecommendsPageInGroup_Page_Target" FromRole="UserRecommendsPageInGroup_Page_Source" />
+      </EntityType>
+      <EntityType Name="PageGroup">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Pages" Relationship="WPFServer.DatabaseContext.UserRecommendsPageInGroup_PageGroup" ToRole="UserRecommendsPageInGroup_PageGroup_Source" FromRole="UserRecommendsPageInGroup_PageGroup_Target" />
+      </EntityType>
+      <EntityType Name="Activity">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="TimeStamp" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="TypeValue" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ActionValue" Type="Edm.Int32" Nullable="false" />
+        <Property Name="UserId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PageId" Type="Edm.Int32" />
+        <Property Name="FileId" Type="Edm.Int32" />
+        <Property Name="Reported" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Visible" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="User" Relationship="WPFServer.DatabaseContext.Activity_User" ToRole="Activity_User_Target" FromRole="Activity_User_Source" />
+        <NavigationProperty Name="Page" Relationship="WPFServer.DatabaseContext.Activity_Page" ToRole="Activity_Page_Target" FromRole="Activity_Page_Source" />
+        <NavigationProperty Name="File" Relationship="WPFServer.DatabaseContext.Activity_File" ToRole="Activity_File_Target" FromRole="Activity_File_Source" />
+      </EntityType>
+      <EntityType Name="SharedFile">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="ContentType" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="UserId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SharedFolderId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="User" Relationship="WPFServer.DatabaseContext.SharedFile_User" ToRole="SharedFile_User_Target" FromRole="SharedFile_User_Source" />
+        <NavigationProperty Name="SharedFolder" Relationship="WPFServer.DatabaseContext.SharedFile_SharedFolder" ToRole="SharedFile_SharedFolder_Target" FromRole="SharedFile_SharedFolder_Source" />
+        <NavigationProperty Name="SharedFileObject" Relationship="WPFServer.DatabaseContext.SharedFile_SharedFileObject" ToRole="SharedFile_SharedFileObject_Target" FromRole="SharedFile_SharedFileObject_Source" />
+        <NavigationProperty Name="Activities" Relationship="WPFServer.DatabaseContext.Activity_File" ToRole="Activity_File_Source" FromRole="Activity_File_Target" />
+      </EntityType>
+      <EntityType Name="SharedFolder">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="ParentFolderId" Type="Edm.Int32" />
+        <NavigationProperty Name="ParentFolder" Relationship="WPFServer.DatabaseContext.SharedFolder_ParentFolder" ToRole="SharedFolder_ParentFolder_Target" FromRole="SharedFolder_ParentFolder_Source" />
+        <NavigationProperty Name="SharedFiles" Relationship="WPFServer.DatabaseContext.SharedFile_SharedFolder" ToRole="SharedFile_SharedFolder_Source" FromRole="SharedFile_SharedFolder_Target" />
+        <NavigationProperty Name="ChildFolders" Relationship="WPFServer.DatabaseContext.SharedFolder_ParentFolder" ToRole="SharedFolder_ParentFolder_Source" FromRole="SharedFolder_ParentFolder_Target" />
+      </EntityType>
+      <EntityType Name="SharedFileObject" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p7:StoreGeneratedPattern="None" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="SharedFile" Relationship="WPFServer.DatabaseContext.SharedFile_SharedFileObject" ToRole="SharedFile_SharedFileObject_Source" FromRole="SharedFile_SharedFileObject_Target" />
+      </EntityType>
+      <EntityType Name="UserSimilarity">
+        <Key>
+          <PropertyRef Name="UserLeftId" />
+          <PropertyRef Name="UserRightId" />
+        </Key>
+        <Property Name="UserLeftId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="UserRightId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Value" Type="Edm.Double" Nullable="false" />
+        <Property Name="EvaluatedAt" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="UserLeft" Relationship="WPFServer.DatabaseContext.UserSimilarity_UserLeft" ToRole="UserSimilarity_UserLeft_Target" FromRole="UserSimilarity_UserLeft_Source" />
+        <NavigationProperty Name="UserRight" Relationship="WPFServer.DatabaseContext.UserSimilarity_UserRight" ToRole="UserSimilarity_UserRight_Target" FromRole="UserSimilarity_UserRight_Source" />
+      </EntityType>
+      <EntityType Name="Prediction">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="PageId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="UserId" Type="Edm.Int32" />
+        <Property Name="TimeStamp" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Page" Relationship="WPFServer.DatabaseContext.Prediction_Page" ToRole="Prediction_Page_Target" FromRole="Prediction_Page_Source" />
+        <NavigationProperty Name="User" Relationship="WPFServer.DatabaseContext.Prediction_User" ToRole="Prediction_User_Target" FromRole="Prediction_User_Source" />
+      </EntityType>
+      <EntityType Name="TagPage">
+        <Key>
+          <PropertyRef Name="TagId" />
+          <PropertyRef Name="PageId" />
+        </Key>
+        <Property Name="TagId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PageId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Page" Relationship="WPFServer.DatabaseContext.TagPage_Page" ToRole="TagPage_Page_Target" FromRole="TagPage_Page_Source" />
+        <NavigationProperty Name="Tag" Relationship="WPFServer.DatabaseContext.TagPage_Tag" ToRole="TagPage_Tag_Target" FromRole="TagPage_Tag_Source" />
+      </EntityType>
+      <EntityType Name="Tag">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Keyword" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Pages" Relationship="WPFServer.DatabaseContext.TagPage_Tag" ToRole="TagPage_Tag_Source" FromRole="TagPage_Tag_Target" />
+      </EntityType>
+      <EntityType Name="CacheLink">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="None" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="AbsoluteURI" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="LastModified" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="ClientCacheLinks" Relationship="WPFServer.DatabaseContext.ClientCacheLink_CacheLink" ToRole="ClientCacheLink_CacheLink_Source" FromRole="ClientCacheLink_CacheLink_Target" />
+      </EntityType>
+      <EntityType Name="ClientCacheLink">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="CacheLinkId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ClientId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="CacheLink" Relationship="WPFServer.DatabaseContext.ClientCacheLink_CacheLink" ToRole="ClientCacheLink_CacheLink_Target" FromRole="ClientCacheLink_CacheLink_Source" />
+        <NavigationProperty Name="Client" Relationship="WPFServer.DatabaseContext.ClientCacheLink_Client" ToRole="ClientCacheLink_Client_Target" FromRole="ClientCacheLink_Client_Source" />
+      </EntityType>
+      <EntityType Name="Client">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="ClientName" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="LastIP" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="ClientCacheLinks" Relationship="WPFServer.DatabaseContext.ClientCacheLink_Client" ToRole="ClientCacheLink_Client_Source" FromRole="ClientCacheLink_Client_Target" />
+        <NavigationProperty Name="CacheUpdates" Relationship="WPFServer.DatabaseContext.CacheUpdate_Client" ToRole="CacheUpdate_Client_Source" FromRole="CacheUpdate_Client_Target" />
+      </EntityType>
+      <EntityType Name="CacheUpdate">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="AbsoluteUri" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="DateRecommended" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Priority" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ClientId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Client" Relationship="WPFServer.DatabaseContext.CacheUpdate_Client" ToRole="CacheUpdate_Client_Target" FromRole="CacheUpdate_Client_Source" />
+      </EntityType>
+      <EntityType Name="AccessLog">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="AccessedAt" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="FetchDuration" Type="Edm.Double" Nullable="false" />
+        <Property Name="DownloadedFrom" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AbsoluteUri" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="CacheId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Type" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <EntityType Name="EdmMetadata">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="ModelHash" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+      </EntityType>
+      <Association Name="UserVisitsPage_Page">
+        <End Type="WPFServer.DatabaseContext.Page" Role="UserVisitsPage_Page_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.UserVisitsPage" Role="UserVisitsPage_Page_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserVisitsPage_Page_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserVisitsPage_Page_Source">
+            <PropertyRef Name="PageId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserRecommendsPageInGroup_Page">
+        <End Type="WPFServer.DatabaseContext.Page" Role="UserRecommendsPageInGroup_Page_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.UserRecommendsPageInGroup" Role="UserRecommendsPageInGroup_Page_Source" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="UserRecommendsPageInGroup_Page_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserRecommendsPageInGroup_Page_Source">
+            <PropertyRef Name="PageId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="TagPage_Page">
+        <End Type="WPFServer.DatabaseContext.Page" Role="TagPage_Page_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.TagPage" Role="TagPage_Page_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="TagPage_Page_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="TagPage_Page_Source">
+            <PropertyRef Name="PageId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Activity_Page">
+        <End Type="WPFServer.DatabaseContext.Page" Role="Activity_Page_Target" Multiplicity="0..1" />
+        <End Type="WPFServer.DatabaseContext.Activity" Role="Activity_Page_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Activity_Page_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Activity_Page_Source">
+            <PropertyRef Name="PageId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Edge_PageFrom">
+        <End Type="WPFServer.DatabaseContext.Page" Role="Edge_PageFrom_Target" Multiplicity="1" />
+        <End Type="WPFServer.DatabaseContext.Edge" Role="Edge_PageFrom_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Edge_PageFrom_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Edge_PageFrom_Source">
+            <PropertyRef Name="PageFromId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Edge_PageTo">
+        <End Type="WPFServer.DatabaseContext.Page" Role="Edge_PageTo_Target" Multiplicity="1" />
+        <End Type="WPFServer.DatabaseContext.Edge" Role="Edge_PageTo_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Edge_PageTo_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Edge_PageTo_Source">
+            <PropertyRef Name="PageToId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Prediction_Page">
+        <End Type="WPFServer.DatabaseContext.Page" Role="Prediction_Page_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.Prediction" Role="Prediction_Page_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Prediction_Page_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Prediction_Page_Source">
+            <PropertyRef Name="PageId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserVisitsPage_User">
+        <End Type="WPFServer.DatabaseContext.User" Role="UserVisitsPage_User_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.UserVisitsPage" Role="UserVisitsPage_User_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserVisitsPage_User_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserVisitsPage_User_Source">
+            <PropertyRef Name="UserId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserTraversesEdge_User">
+        <End Type="WPFServer.DatabaseContext.User" Role="UserTraversesEdge_User_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.UserTraversesEdge" Role="UserTraversesEdge_User_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserTraversesEdge_User_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserTraversesEdge_User_Source">
+            <PropertyRef Name="UserId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserRecommendsPageInGroup_User">
+        <End Type="WPFServer.DatabaseContext.User" Role="UserRecommendsPageInGroup_User_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.UserRecommendsPageInGroup" Role="UserRecommendsPageInGroup_User_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserRecommendsPageInGroup_User_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserRecommendsPageInGroup_User_Source">
+            <PropertyRef Name="UserId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Activity_User">
+        <End Type="WPFServer.DatabaseContext.User" Role="Activity_User_Target" Multiplicity="1" />
+        <End Type="WPFServer.DatabaseContext.Activity" Role="Activity_User_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Activity_User_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Activity_User_Source">
+            <PropertyRef Name="UserId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SharedFile_User">
+        <End Type="WPFServer.DatabaseContext.User" Role="SharedFile_User_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.SharedFile" Role="SharedFile_User_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SharedFile_User_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="SharedFile_User_Source">
+            <PropertyRef Name="UserId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserSimilarity_UserRight">
+        <End Type="WPFServer.DatabaseContext.User" Role="UserSimilarity_UserRight_Target" Multiplicity="1" />
+        <End Type="WPFServer.DatabaseContext.UserSimilarity" Role="UserSimilarity_UserRight_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserSimilarity_UserRight_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserSimilarity_UserRight_Source">
+            <PropertyRef Name="UserRightId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserSimilarity_UserLeft">
+        <End Type="WPFServer.DatabaseContext.User" Role="UserSimilarity_UserLeft_Target" Multiplicity="1" />
+        <End Type="WPFServer.DatabaseContext.UserSimilarity" Role="UserSimilarity_UserLeft_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserSimilarity_UserLeft_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserSimilarity_UserLeft_Source">
+            <PropertyRef Name="UserLeftId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Prediction_User">
+        <End Type="WPFServer.DatabaseContext.User" Role="Prediction_User_Target" Multiplicity="0..1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.Prediction" Role="Prediction_User_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Prediction_User_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Prediction_User_Source">
+            <PropertyRef Name="UserId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserTraversesEdge_Edge">
+        <End Type="WPFServer.DatabaseContext.Edge" Role="UserTraversesEdge_Edge_Target" Multiplicity="1" />
+        <End Type="WPFServer.DatabaseContext.UserTraversesEdge" Role="UserTraversesEdge_Edge_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserTraversesEdge_Edge_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserTraversesEdge_Edge_Source">
+            <PropertyRef Name="EdgeId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="UserRecommendsPageInGroup_PageGroup">
+        <End Type="WPFServer.DatabaseContext.PageGroup" Role="UserRecommendsPageInGroup_PageGroup_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.UserRecommendsPageInGroup" Role="UserRecommendsPageInGroup_PageGroup_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="UserRecommendsPageInGroup_PageGroup_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UserRecommendsPageInGroup_PageGroup_Source">
+            <PropertyRef Name="PageGroupId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Activity_File">
+        <End Type="WPFServer.DatabaseContext.SharedFile" Role="Activity_File_Target" Multiplicity="0..1" />
+        <End Type="WPFServer.DatabaseContext.Activity" Role="Activity_File_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Activity_File_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Activity_File_Source">
+            <PropertyRef Name="FileId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SharedFile_SharedFolder">
+        <End Type="WPFServer.DatabaseContext.SharedFolder" Role="SharedFile_SharedFolder_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.SharedFile" Role="SharedFile_SharedFolder_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SharedFile_SharedFolder_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="SharedFile_SharedFolder_Source">
+            <PropertyRef Name="SharedFolderId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SharedFile_SharedFileObject">
+        <End Type="WPFServer.DatabaseContext.SharedFileObject" Role="SharedFile_SharedFileObject_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.SharedFile" Role="SharedFile_SharedFileObject_Source" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="SharedFile_SharedFileObject_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="SharedFile_SharedFileObject_Source">
+            <PropertyRef Name="Id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SharedFolder_ParentFolder">
+        <End Type="WPFServer.DatabaseContext.SharedFolder" Role="SharedFolder_ParentFolder_Target" Multiplicity="0..1" />
+        <End Type="WPFServer.DatabaseContext.SharedFolder" Role="SharedFolder_ParentFolder_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SharedFolder_ParentFolder_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="SharedFolder_ParentFolder_Source">
+            <PropertyRef Name="ParentFolderId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="TagPage_Tag">
+        <End Type="WPFServer.DatabaseContext.Tag" Role="TagPage_Tag_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.TagPage" Role="TagPage_Tag_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="TagPage_Tag_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="TagPage_Tag_Source">
+            <PropertyRef Name="TagId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="ClientCacheLink_CacheLink">
+        <End Type="WPFServer.DatabaseContext.CacheLink" Role="ClientCacheLink_CacheLink_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.ClientCacheLink" Role="ClientCacheLink_CacheLink_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="ClientCacheLink_CacheLink_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="ClientCacheLink_CacheLink_Source">
+            <PropertyRef Name="CacheLinkId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="ClientCacheLink_Client">
+        <End Type="WPFServer.DatabaseContext.Client" Role="ClientCacheLink_Client_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.ClientCacheLink" Role="ClientCacheLink_Client_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="ClientCacheLink_Client_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="ClientCacheLink_Client_Source">
+            <PropertyRef Name="ClientId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="CacheUpdate_Client">
+        <End Type="WPFServer.DatabaseContext.Client" Role="CacheUpdate_Client_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="WPFServer.DatabaseContext.CacheUpdate" Role="CacheUpdate_Client_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="CacheUpdate_Client_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="CacheUpdate_Client_Source">
+            <PropertyRef Name="ClientId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <EntityContainer Name="MyDBContext" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Pages" EntityType="WPFServer.DatabaseContext.Page" />
+        <EntitySet Name="Visits" EntityType="WPFServer.DatabaseContext.UserVisitsPage" />
+        <EntitySet Name="Users" EntityType="WPFServer.DatabaseContext.User" />
+        <EntitySet Name="Traverses" EntityType="WPFServer.DatabaseContext.UserTraversesEdge" />
+        <EntitySet Name="Edges" EntityType="WPFServer.DatabaseContext.Edge" />
+        <EntitySet Name="PageRecommendations" EntityType="WPFServer.DatabaseContext.UserRecommendsPageInGroup" />
+        <EntitySet Name="PageGroups" EntityType="WPFServer.DatabaseContext.PageGroup" />
+        <EntitySet Name="Activities" EntityType="WPFServer.DatabaseContext.Activity" />
+        <EntitySet Name="SharedFiles" EntityType="WPFServer.DatabaseContext.SharedFile" />
+        <EntitySet Name="SharedFolders" EntityType="WPFServer.DatabaseContext.SharedFolder" />
+        <EntitySet Name="SharedFileObjects" EntityType="WPFServer.DatabaseContext.SharedFileObject" />
+        <EntitySet Name="Similarities" EntityType="WPFServer.DatabaseContext.UserSimilarity" />
+        <EntitySet Name="Predictions" EntityType="WPFServer.DatabaseContext.Prediction" />
+        <EntitySet Name="TagPages" EntityType="WPFServer.DatabaseContext.TagPage" />
+        <EntitySet Name="Tags" EntityType="WPFServer.DatabaseContext.Tag" />
+        <EntitySet Name="CacheLinks" EntityType="WPFServer.DatabaseContext.CacheLink" />
+        <EntitySet Name="ClientCacheLinks" EntityType="WPFServer.DatabaseContext.ClientCacheLink" />
+        <EntitySet Name="Clients" EntityType="WPFServer.DatabaseContext.Client" />
+        <EntitySet Name="CacheUpdates" EntityType="WPFServer.DatabaseContext.CacheUpdate" />
+        <EntitySet Name="AccessLogs" EntityType="WPFServer.DatabaseContext.AccessLog" />
+        <EntitySet Name="EdmMetadatas" EntityType="WPFServer.DatabaseContext.EdmMetadata" />
+        <AssociationSet Name="UserVisitsPage_Page" Association="WPFServer.DatabaseContext.UserVisitsPage_Page">
+          <End Role="UserVisitsPage_Page_Target" EntitySet="Pages" />
+          <End Role="UserVisitsPage_Page_Source" EntitySet="Visits" />
+        </AssociationSet>
+        <AssociationSet Name="UserRecommendsPageInGroup_Page" Association="WPFServer.DatabaseContext.UserRecommendsPageInGroup_Page">
+          <End Role="UserRecommendsPageInGroup_Page_Target" EntitySet="Pages" />
+          <End Role="UserRecommendsPageInGroup_Page_Source" EntitySet="PageRecommendations" />
+        </AssociationSet>
+        <AssociationSet Name="TagPage_Page" Association="WPFServer.DatabaseContext.TagPage_Page">
+          <End Role="TagPage_Page_Target" EntitySet="Pages" />
+          <End Role="TagPage_Page_Source" EntitySet="TagPages" />
+        </AssociationSet>
+        <AssociationSet Name="Activity_Page" Association="WPFServer.DatabaseContext.Activity_Page">
+          <End Role="Activity_Page_Target" EntitySet="Pages" />
+          <End Role="Activity_Page_Source" EntitySet="Activities" />
+        </AssociationSet>
+        <AssociationSet Name="Edge_PageFrom" Association="WPFServer.DatabaseContext.Edge_PageFrom">
+          <End Role="Edge_PageFrom_Target" EntitySet="Pages" />
+          <End Role="Edge_PageFrom_Source" EntitySet="Edges" />
+        </AssociationSet>
+        <AssociationSet Name="Edge_PageTo" Association="WPFServer.DatabaseContext.Edge_PageTo">
+          <End Role="Edge_PageTo_Target" EntitySet="Pages" />
+          <End Role="Edge_PageTo_Source" EntitySet="Edges" />
+        </AssociationSet>
+        <AssociationSet Name="Prediction_Page" Association="WPFServer.DatabaseContext.Prediction_Page">
+          <End Role="Prediction_Page_Target" EntitySet="Pages" />
+          <End Role="Prediction_Page_Source" EntitySet="Predictions" />
+        </AssociationSet>
+        <AssociationSet Name="UserVisitsPage_User" Association="WPFServer.DatabaseContext.UserVisitsPage_User">
+          <End Role="UserVisitsPage_User_Source" EntitySet="Visits" />
+          <End Role="UserVisitsPage_User_Target" EntitySet="Users" />
+        </AssociationSet>
+        <AssociationSet Name="UserTraversesEdge_User" Association="WPFServer.DatabaseContext.UserTraversesEdge_User">
+          <End Role="UserTraversesEdge_User_Target" EntitySet="Users" />
+          <End Role="UserTraversesEdge_User_Source" EntitySet="Traverses" />
+        </AssociationSet>
+        <AssociationSet Name="UserRecommendsPageInGroup_User" Association="WPFServer.DatabaseContext.UserRecommendsPageInGroup_User">
+          <End Role="UserRecommendsPageInGroup_User_Target" EntitySet="Users" />
+          <End Role="UserRecommendsPageInGroup_User_Source" EntitySet="PageRecommendations" />
+        </AssociationSet>
+        <AssociationSet Name="Activity_User" Association="WPFServer.DatabaseContext.Activity_User">
+          <End Role="Activity_User_Target" EntitySet="Users" />
+          <End Role="Activity_User_Source" EntitySet="Activities" />
+        </AssociationSet>
+        <AssociationSet Name="SharedFile_User" Association="WPFServer.DatabaseContext.SharedFile_User">
+          <End Role="SharedFile_User_Target" EntitySet="Users" />
+          <End Role="SharedFile_User_Source" EntitySet="SharedFiles" />
+        </AssociationSet>
+        <AssociationSet Name="UserSimilarity_UserRight" Association="WPFServer.DatabaseContext.UserSimilarity_UserRight">
+          <End Role="UserSimilarity_UserRight_Target" EntitySet="Users" />
+          <End Role="UserSimilarity_UserRight_Source" EntitySet="Similarities" />
+        </AssociationSet>
+        <AssociationSet Name="UserSimilarity_UserLeft" Association="WPFServer.DatabaseContext.UserSimilarity_UserLeft">
+          <End Role="UserSimilarity_UserLeft_Target" EntitySet="Users" />
+          <End Role="UserSimilarity_UserLeft_Source" EntitySet="Similarities" />
+        </AssociationSet>
+        <AssociationSet Name="Prediction_User" Association="WPFServer.DatabaseContext.Prediction_User">
+          <End Role="Prediction_User_Target" EntitySet="Users" />
+          <End Role="Prediction_User_Source" EntitySet="Predictions" />
+        </AssociationSet>
+        <AssociationSet Name="UserTraversesEdge_Edge" Association="WPFServer.DatabaseContext.UserTraversesEdge_Edge">
+          <End Role="UserTraversesEdge_Edge_Source" EntitySet="Traverses" />
+          <End Role="UserTraversesEdge_Edge_Target" EntitySet="Edges" />
+        </AssociationSet>
+        <AssociationSet Name="UserRecommendsPageInGroup_PageGroup" Association="WPFServer.DatabaseContext.UserRecommendsPageInGroup_PageGroup">
+          <End Role="UserRecommendsPageInGroup_PageGroup_Source" EntitySet="PageRecommendations" />
+          <End Role="UserRecommendsPageInGroup_PageGroup_Target" EntitySet="PageGroups" />
+        </AssociationSet>
+        <AssociationSet Name="Activity_File" Association="WPFServer.DatabaseContext.Activity_File">
+          <End Role="Activity_File_Source" EntitySet="Activities" />
+          <End Role="Activity_File_Target" EntitySet="SharedFiles" />
+        </AssociationSet>
+        <AssociationSet Name="SharedFile_SharedFolder" Association="WPFServer.DatabaseContext.SharedFile_SharedFolder">
+          <End Role="SharedFile_SharedFolder_Source" EntitySet="SharedFiles" />
+          <End Role="SharedFile_SharedFolder_Target" EntitySet="SharedFolders" />
+        </AssociationSet>
+        <AssociationSet Name="SharedFile_SharedFileObject" Association="WPFServer.DatabaseContext.SharedFile_SharedFileObject">
+          <End Role="SharedFile_SharedFileObject_Source" EntitySet="SharedFiles" />
+          <End Role="SharedFile_SharedFileObject_Target" EntitySet="SharedFileObjects" />
+        </AssociationSet>
+        <AssociationSet Name="SharedFolder_ParentFolder" Association="WPFServer.DatabaseContext.SharedFolder_ParentFolder">
+          <End Role="SharedFolder_ParentFolder_Source" EntitySet="SharedFolders" />
+          <End Role="SharedFolder_ParentFolder_Target" EntitySet="SharedFolders" />
+        </AssociationSet>
+        <AssociationSet Name="TagPage_Tag" Association="WPFServer.DatabaseContext.TagPage_Tag">
+          <End Role="TagPage_Tag_Source" EntitySet="TagPages" />
+          <End Role="TagPage_Tag_Target" EntitySet="Tags" />
+        </AssociationSet>
+        <AssociationSet Name="ClientCacheLink_CacheLink" Association="WPFServer.DatabaseContext.ClientCacheLink_CacheLink">
+          <End Role="ClientCacheLink_CacheLink_Target" EntitySet="CacheLinks" />
+          <End Role="ClientCacheLink_CacheLink_Source" EntitySet="ClientCacheLinks" />
+        </AssociationSet>
+        <AssociationSet Name="ClientCacheLink_Client" Association="WPFServer.DatabaseContext.ClientCacheLink_Client">
+          <End Role="ClientCacheLink_Client_Source" EntitySet="ClientCacheLinks" />
+          <End Role="ClientCacheLink_Client_Target" EntitySet="Clients" />
+        </AssociationSet>
+        <AssociationSet Name="CacheUpdate_Client" Association="WPFServer.DatabaseContext.CacheUpdate_Client">
+          <End Role="CacheUpdate_Client_Target" EntitySet="Clients" />
+          <End Role="CacheUpdate_Client_Source" EntitySet="CacheUpdates" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

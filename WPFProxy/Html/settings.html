@@ -1,0 +1,91 @@
+﻿    <!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Settings</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+	<base href="http://my.ownet/" />
+	<link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+
+	<link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+	<!-- <script src="js/functions.js"></script>-->
+	<script type="text/javascript" src='js/jquery.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+			<!-- qTip -->
+	<script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+    
+    	
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+    <script type="text/javascript"><!--
+        $(function () {
+            $("#tab-links").organicTabs({ "speed": 250 });
+        });
+       $(document).ready(function () {
+            // otvorime tooltip pre danu sekcii
+            OwnetTooltip("settings");
+        });
+    --></script>
+</head>
+
+<body>
+<div id="content">
+	<div id="page-top-lath"></div>
+	<div id="page">
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+
+
+		</div>
+		
+        <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close"></div>
+			<strong>SETTINGS</strong> » Here you can change details about you and your password.
+		</div>
+
+		<!-- Tab links -->
+        <div id="tab-links">
+			<ul class="nav">
+                <li class="nav-category"><a href="#userinfo" id="auserinfo" class="current" onclick="TabLoad('userinfo', 'user/information/update');"><strong>Information</strong></a></li>
+                <li class="nav-category"><a href="#userpass" id="auserpass" onclick="TabLoad('userpass', 'user/password/update');"><strong>Password</strong></a></li>
+                <li class="nav-category"><a href="#caching" id="acaching" onclick="TabLoad('caching', 'cache/settings');"><strong>Caching</strong></a></li>
+
+            </ul>
+        	<h1><img src="graphics/settings.png" class="img-7" alt=""/> Settings <span id="username"></span></h1>	
+			
+
+            <!-- TOP News -->
+			<script type="text/javascript">
+			    $(document).ready(function () { $("a.current").trigger("click"); });
+			</script>
+			<div id="userinfo"><div class="ajax_loader"></div></div>
+			
+			<div id="userpass" class="hide"><div class="ajax_loader"></div></div>
+            
+			<div id="caching" class="hide"><div class="ajax_loader"></div></div>
+         </div>			
+	</div>
+	
+	<!-- Footer of page -->
+		<div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>

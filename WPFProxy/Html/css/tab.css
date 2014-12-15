@@ -1,0 +1,123 @@
+/* Owe Tab */
+#owe-tab {
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	position: fixed !important;
+	top: 0 !important;
+	right: 0 !important;
+	left: 0 !important;
+   z-index: 999999;
+
+	width: 220px !important;
+	height: 0px !important;
+	padding: 30px 0px 0px 3px !important;
+	margin: 0px !important;
+	
+	line-height: 18px !important;
+	font-size: 10px !important;
+	font-weight: normal !important;
+	text-align: left !important;
+	
+	border-bottom: 2px solid #ffe566;
+	border-right: 2px solid #ffe566;
+	border-left: none;
+	border-top: none;
+
+	 
+	color: #2490b2 !important;
+   background: rgba(255, 244, 190, 0.8);
+   -pie-background: rgba(255, 244, 190, 0.8);
+   behavior: url('http://my.ownet/css/transparent/PIE.htc');
+}        
+#owNet-iframe-close  
+{
+    text-align: right !important;
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	color: #868686 !important;
+	vertical-align:top;
+	height: 20px;
+}
+#owe-tab .owe-tab-content {
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	padding: 10px 4px 4px 4px;
+	margin: 5px 0px 0px 0px;
+}   
+#owe-tab .my-owe {
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	position: absolute !important;
+	top: 7px !important;
+	left: 10px !important;
+	color: #868686 !important;
+	font-size: 10px !important;
+}
+#owe-tab .my-owe a {
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	color: #2490b2 !important;
+	text-decoration: none;
+}
+#owe-tab .my-owe a:hover {
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	color: #2490b2 !important;
+	text-decoration: underline;
+}
+     
+#owe-tab .owe-tab-close {
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	position: absolute !important;
+	top: 8px;
+	left: 205px;
+	cursor: pointer !important;
+}
+#owe-tab img {
+	font: 10px Helvetica, Arial, "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", Tahoma, Verdana !important;
+	margin: 0px;
+	padding: 0px !important;
+	text-decoration: none !important;
+	background: none !important;
+	border: none !important;
+	width: auto !important;
+	height: auto !important;
+	display: inline !important;
+	float: none !important;
+}
+
+/* Images */
+#owe-tab .img-4 {
+	margin-bottom: -4px;
+	margin-right: 4px;
+	display: inline !important;
+	float: none !important;
+	color: #82d1ff;
+}
+
+.owNetHighlight { border: 2px solid #F49B04; }
+
+/* OwNet Notificator */
+#owe-tab .owe-notificator {
+	float: left !important;
+	color: #ffffff !important;
+	width: 16px !important;
+	height: 16px !important;
+	background: url(images/owetab_notificator.png) no-repeat 0% 0% !important;
+	margin: 0px 5px 0px 0px !important;
+	text-align: center !important;
+	line-height: 16px;
+}
+#owe-tab .owe-notificator a {
+	font-size: 9px !important;
+	color: #ffffff !important;
+}
+
+#owe-tab .owe-notificator_ac {
+	float: left !important;
+	color: #ffffff !important;
+	width: 16px !important;
+	height: 16px !important;
+	background: url(images/owetab_notificator_red.png) no-repeat 0% 0% !important;
+	margin: 0px 5px 0px 0px !important;
+	text-align: center !important;
+	line-height: 16px;
+}
+#owe-tab .owe-notificator_ac a {
+	font-size: 9px !important;
+	color: #ffffff !important;
+}

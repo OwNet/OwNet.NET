@@ -1,0 +1,153 @@
+﻿<!-- Rate website -->
+<div id="rate-web" class="cleaner">
+    <div id="user-info"><a href="javascript:void(0);" id="login-username"> </a> | <a href="javascript:void(0);" onclick="logout(); return false;">Logout</a> »</div>
+	<h2>Rate this website</h2>
+	<img src="graphics/people.gif" style="float: left; margin-top: 0px;" alt=""/>
+	<div id="tabstarrating">
+
+		<ul class="tabstar-rating" id="star-rating-1">
+			<li class="tabcurrent-rating" id="current-rating-1" style="width: 0%;"></li>
+			<span class="tabratelinks" id="1">
+				<li><a href="javascript:setRating(1);" rel="nofollow" title="1 star out of 5" class="one-star">1</a></li>
+				<li><a href="javascript:setRating(2);" rel="nofollow" title="2 stars out of 5" class="two-stars">2</a></li>
+				<li><a href="javascript:setRating(3);" rel="nofollow" title="3 stars out of 5" class="three-stars">3</a></li>
+				<li><a href="javascript:setRating(4);" rel="nofollow" title="4 stars out of 5" class="four-stars">4</a></li>
+				<li><a href="javascript:setRating(5);" rel="nofollow" title="5 stars out of 5" class="five-stars">5</a></li>
+			</span>
+		</ul>
+
+		<span class="tabcurrent-count" id="itext">You have not rated this website yet.</span>
+	</div>
+</div>
+			
+<!-- Recommend web -->
+<div id="recommendweb" class="cleaner">
+	<h2>Recommend this website</h2>
+    <div id="messages"></div>
+<!--	<form action="#">  -->
+		<table class="table_links">
+			<tr>
+				<td class="table_header"><strong>Title</strong><span class="tip_help" id="rtitlehelp" title="Recommend this webpage for other users, share it with them. Describe the page by title and description. You can see all submitted recommendations on OwNet homepage. Recommendation title is limited to 70 characters, description to 300 characters."></span></td>
+				<td class="table_content"><input type="text" name="title" class="input_iframe" id="rtitle" value="" />
+                <span id="rtitletext" style="display: none;"></span></td>
+			</tr>
+			<tr>
+				<td class="table_header"><strong>Description</strong></td>
+				<td class="table_content">
+                <textarea name="about" id="rdesc" class="recommend-site-about"></textarea>
+                <div id="rdesctext" class="recommend-site-about" style="display: none; overflow: auto;"></div>
+                </td>					
+			</tr>
+			<!-- <tr>
+				<td class="table_header"><strong>Category</strong><span id="rgrouphelp" class="tip_help" title="Choose the category where your recommendation belongs to. "></span></td>
+				<td class="table_content">
+					<select name="recommend-site-category" class="recommend-site-category" id="rgroup">
+						<option selected="selected" value="--Choose--">--Choose--</option>
+						<option value="School">School</option>
+						<option value="Entertainment">Entertainment</option>
+						<option value="Sport">Sport</option>
+						<option value="News">News</option>
+						<option value="Other">Other</option>
+					</select>
+                    <span id="rgrouptext" style="display: none;"></span>
+				</td>
+			</tr> -->
+
+            <tr>
+				<td class="table_header"><strong>Group</strong><span id="Span1" class="tip_help" title="Choose the group where your recommendation belongs to. "></span></td>
+				<td class="table_content">
+                      <div class="ui-widget" id="rgroup">
+                            <input id="autocompleteGroups" onfocus="groupForm()" onblur="groupAble()" />
+                            or
+                            <select name="recommend-site-group" class="recommend-site-group" id="rselect-group" onfocus="groupForm2()" onblur="groupAble()" >
+					        </select> 
+                    </div>       
+
+	                <span id="rgrouptext" style="display: none;"></span>
+				</td>
+			</tr>
+			<tr>
+				<td class="table_header" id="td-recomm-submit"><strong style="display:none;" id="rauthorlabel">Author</strong>&nbsp;</td>
+				<td class="table_content" >
+                    <input name="submit" type="button" class="button" onclick="setRecommendation();" value="Recommend this site" id="rsubmit"/>
+				    <span id="rauthortext" style="display: none;"> </span>         
+                    <input name="submit" type="button" class="button" onclick="editRecommendation();" value="Edit" id="redit" style="display: none;" />
+                </td>
+			</tr>
+		</table>
+	<!--</form>-->
+</div>
+
+<!-- Tag web -->
+<div id="tagweb" class="cleaner">
+	<h2>Tag this website</h2>
+	<form onsubmit="setTags();return false;" >  
+		<table class="table_links">
+			<tr>
+				<td class="table_header" id="td-tag-submit"><strong>Tags</strong><span class="tip_help" title="Tags are words which describe this webpage. You can use them to search this website on OwNet homepage. Separate the tags by space."></span></td>
+				<td class="table_content"><input type="text" name="title" class="input_iframe" value="" id="tags" style="width: 210px;"/> <input name="submit" type="submit" class="button" value="Tag this site" style="width: 100px; margin-left: 7px; "/></td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<!-- Popular tags -->
+<div id="populartags" class="cleaner">
+	<img src="graphics/tag.png" class="img-3 transparent" alt="" />
+	<h3>Submitted tags:</h3>
+    <!--
+	<a href="#">referáty</a>,
+	<a href="#">ťaháky</a>,
+	<a href="#">maturita</a>,
+	<a href="#">zones</a>
+    -->
+    <span id="ttags"></span>
+</div>
+
+<!-- Previous recommendations -->
+<div id="previousrecommendations" class="cleaner">
+    <h2>Previous recommendations</h2>
+    <table class="table_links">
+        <tr>
+            <td><strong>Title</strong></td>
+            <td><strong>Group</strong></td>
+        </tr>
+        <tbody id="previousrecommendations_tbody"></tbody>
+    </table>
+</div>
+
+<div class="weblinks cleaner"><img src="graphics/my.png" class="img-4 transparent" alt="" />
+    <a id="parentweblink" href="#" onclick="parent.location.href = this.href; return false;">current web site</a>
+</div>
+
+<script type="text/javascript">
+    getRating();
+    getRecommendation();
+    getTags();
+    setExternalLink(document.getElementById("parentweblink"));
+
+   function groupForm() {
+        $('#autocompleteGroups').val('');
+        $('#rselect-group').prop('disabled', true);
+        $('#autocompleteGroups').prop('disabled', false);
+    };
+
+    function groupForm2() {
+        $('#autocompleteGroups').val('search groups...');
+        $('#autocompleteGroups').prop('disabled', true);
+        $('#rselect-group').prop('disabled', false);
+    };
+
+
+    function groupAble() {
+        $('#rselect-group').prop('disabled', false);
+        $('#autocompleteGroups').prop('disabled', false);
+        /*$('#autocompleteGroups').val('search groups...');*/
+    };
+
+    $(document).ready(function () {
+        if ($('#previousrecommendations_tbody tr').length == 0)
+            $('#previousrecommendations').hide();
+    });
+
+</script>

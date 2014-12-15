@@ -1,0 +1,41 @@
+﻿			<h2 style="margin-top: 10px;">Update personal information</h2>
+<div id="updateformdiv">
+<form onsubmit="updateInformation(); return false;" id="updateform">  
+    <input type="hidden" id="userid" name="userid" value="" />
+    <input type="hidden" id="username" name="username" value="" />
+	<table class="table_login" id="updateformtable">
+		<tr>
+			<td class="table_header_reg"><strong>Username</strong></td>
+			<td class="table_content"><strong id="usernamestr"></strong></td>
+		</tr>
+		<tr>
+			<td class="table_header_reg"><strong>Firstname</strong></td>
+			<td class="table_content"><input type="text" name="firstname" class="input_register" id="firstname" value="" /><span class="tip_help" title="Firstname can contain letters, numbers, spaces, dots and commas. Minimum length is 2 characters, maximum is 15."></span></td>
+		</tr>
+		<tr>
+			<td class="table_header_reg"><strong>Surname</strong></td>
+			<td class="table_content"><input type="text" name="surname" class="input_register" id="surname" value="" /><span class="tip_help" title="Surname can contain letters, numbers, spaces, dots and commas. Minimum length is 2 characters, maximum is 15."></span></td>
+		</tr>
+		<tr>
+			<td class="table_header_reg"><strong>Gender</strong></td>
+			<td class="table_content"><span id="genderselect"><input type="radio" name="gender" id="genderfemale" value="female"  /> Female <input type="radio" id="gendermale" name="gender" value="male" /> Male</span></td>
+		</tr>
+        <tr id="roleselect">
+			<td class="table_header_reg"><strong>Role</strong><span class="tip_help" title="Choose role of this user in OwNet. You can give him more privileges by promoting him or her to teacher."></span></td>
+			<td class="table_content"><input type="radio" name="role" id="rolestudent" value="student"  /> Student <input type="radio" id="roleteacher" name="role" value="teacher" /> Teacher</td>
+		</tr>
+		<tr>
+			<td class="table_header_reg"><strong>E-mail</strong></td>
+			<td class="table_content"><input type="text" name="email" class="input_register" id="email" value="" /><span class="tip_help" title="Your e-mail address. If you don't have any, leave it blank."></span></td>
+		</tr>
+		<tr>
+			<td class="table_header_reg">&nbsp;</td>
+			<td class="table_content">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="table_header_reg center" id="infoloader"></td>
+			<td class="table_submit_reg"><input type="submit" class="button_login" value="Edit"/></td> <!--  onclick="return confirm('Do you want to change password?')"-->
+		</tr>
+	</table>
+</form>
+</div>

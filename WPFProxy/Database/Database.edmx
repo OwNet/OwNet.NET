@@ -1,0 +1,314 @@
+﻿<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Runtime>
+<edmx:StorageModels>
+<Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Blacklist" EntityType="DatabaseModel.Store.Blacklist" store:Type="Tables" />
+          <EntitySet Name="CacheHeaders" EntityType="DatabaseModel.Store.CacheHeaders" store:Type="Tables" />
+          <EntitySet Name="Caches" EntityType="DatabaseModel.Store.Caches" store:Type="Tables" />
+          <EntitySet Name="CacheUpdates" EntityType="DatabaseModel.Store.CacheUpdates" store:Type="Tables" />
+          <EntitySet Name="PrefetchOrders" EntityType="DatabaseModel.Store.PrefetchOrders" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="DatabaseModel.Store.Users" store:Type="Tables" />
+          <AssociationSet Name="FK_CacheHeaders_Caches" Association="DatabaseModel.Store.FK_CacheHeaders_Caches">
+            <End Role="Caches" EntitySet="Caches" />
+            <End Role="CacheHeaders" EntitySet="CacheHeaders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Blacklist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RegularExpression" Type="nvarchar" />
+          <Property Name="CacheOnServer" Type="int" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="CacheHeaders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="nvarchar" />
+          <Property Name="Value" Type="nvarchar" />
+          <Property Name="CacheId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Caches">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="AbsoluteUri" Type="nvarchar" Nullable="false" />
+          <Property Name="UserAgent" Type="nvarchar" MaxLength="400" />
+          <Property Name="Expires" Type="datetime" />
+          <Property Name="StatusCode" Type="int" />
+          <Property Name="DateStored" Type="datetime" />
+          <Property Name="StatusDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="CharacterSet" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccessCount" Type="int" />
+          <Property Name="AccessValue" Type="float" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="Size" Type="bigint" />
+          <Property Name="Parts" Type="int" />
+        </EntityType>
+        <EntityType Name="CacheUpdates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="AbsoluteUri" Type="nvarchar" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrefetchOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="FromTitle" Type="nvarchar" Nullable="false" />
+          <Property Name="FromAbsoluteUri" Type="nvarchar" Nullable="false" />
+          <Property Name="ToTitle" Type="nvarchar" Nullable="false" />
+          <Property Name="ToAbsoluteUri" Type="nvarchar" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
+          <Property Name="DateCompleted" Type="datetime" />
+          <Property Name="Priority" Type="tinyint" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="IsScheduled" Type="bit" Nullable="false" />
+          <Property Name="Attempts" Type="tinyint" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Current" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CacheHeaders_Caches">
+          <End Role="Caches" Type="DatabaseModel.Store.Caches" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CacheHeaders" Type="DatabaseModel.Store.CacheHeaders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caches">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CacheHeaders">
+              <PropertyRef Name="CacheId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+<edmx:ConceptualModels>
+<Schema Namespace="DatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Blacklist" EntityType="DatabaseModel.Blacklist" />
+    <EntitySet Name="Users" EntityType="DatabaseModel.Users" />
+          <EntitySet Name="CacheUpdates" EntityType="DatabaseModel.CacheUpdates" />
+          <EntitySet Name="CacheHeaders" EntityType="DatabaseModel.CacheHeaders" />
+          <EntitySet Name="Caches" EntityType="DatabaseModel.Caches" />
+          <AssociationSet Name="FK_CacheHeaders_Caches" Association="DatabaseModel.FK_CacheHeaders_Caches">
+            <End Role="Caches" EntitySet="Caches" />
+            <End Role="CacheHeaders" EntitySet="CacheHeaders" />
+          </AssociationSet>
+          <EntitySet Name="PrefetchOrders" EntityType="DatabaseModel.PrefetchOrders" />
+  </EntityContainer>
+  <EntityType Name="Blacklist">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="RegularExpression" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="CacheOnServer" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Mail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Current" Type="Int32" Nullable="false" />
+  </EntityType>
+        <EntityType Name="CacheUpdates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" />
+          <Property Type="Int32" Name="Priority" />
+          <Property Type="String" Name="AbsoluteUri" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CacheHeaders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Key" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Value" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CacheId" Nullable="false" />
+          <NavigationProperty Name="Caches" Relationship="DatabaseModel.FK_CacheHeaders_Caches" FromRole="CacheHeaders" ToRole="Caches" />
+        </EntityType>
+        <EntityType Name="Caches">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="AbsoluteUri" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserAgent" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Expires" />
+          <Property Type="Int32" Name="StatusCode" />
+          <Property Type="DateTime" Name="DateStored" />
+          <Property Type="String" Name="StatusDescription" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CharacterSet" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContentType" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AccessCount" />
+          <Property Type="Double" Name="AccessValue" />
+          <Property Type="DateTime" Name="DateModified" />
+          <Property Type="Int64" Name="Size" />
+          <NavigationProperty Name="CacheHeaders" Relationship="DatabaseModel.FK_CacheHeaders_Caches" FromRole="Caches" ToRole="CacheHeaders" />
+          <Property Type="Int32" Name="Parts" />
+        </EntityType>
+        <Association Name="FK_CacheHeaders_Caches">
+          <End Type="DatabaseModel.Caches" Role="Caches" Multiplicity="1" />
+          <End Type="DatabaseModel.CacheHeaders" Role="CacheHeaders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caches">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CacheHeaders">
+              <PropertyRef Name="CacheId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PrefetchOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="FromTitle" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAbsoluteUri" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToTitle" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAbsoluteUri" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
+          <Property Type="Boolean" Name="Completed" Nullable="false" />
+          <Property Type="DateTime" Name="DateCompleted" />
+          <Property Type="Byte" Name="Priority" Nullable="false" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="IsScheduled" Nullable="false" />
+          <Property Type="Byte" Name="Attempts" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+</Schema>
+</edmx:ConceptualModels>
+<edmx:Mappings>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="DatabaseEntities" StorageEntityContainer="DatabaseModelStoreContainer">
+    <EntitySetMapping Name="Blacklist">
+      <EntityTypeMapping TypeName="DatabaseModel.Blacklist">
+        <MappingFragment StoreEntitySet="Blacklist">
+          <ScalarProperty Name="RegularExpression" ColumnName="RegularExpression" />
+          <ScalarProperty Name="CacheOnServer" ColumnName="CacheOnServer" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DatabaseModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Current" ColumnName="Current" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="CacheUpdates">
+            <EntityTypeMapping TypeName="DatabaseModel.CacheUpdates">
+              <MappingFragment StoreEntitySet="CacheUpdates">
+                <ScalarProperty Name="AbsoluteUri" ColumnName="AbsoluteUri" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CacheHeaders">
+            <EntityTypeMapping TypeName="DatabaseModel.CacheHeaders">
+              <MappingFragment StoreEntitySet="CacheHeaders">
+                <ScalarProperty Name="CacheId" ColumnName="CacheId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Caches">
+            <EntityTypeMapping TypeName="DatabaseModel.Caches">
+              <MappingFragment StoreEntitySet="Caches">
+                <ScalarProperty Name="Parts" ColumnName="Parts" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="AccessValue" ColumnName="AccessValue" />
+                <ScalarProperty Name="AccessCount" ColumnName="AccessCount" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="CharacterSet" ColumnName="CharacterSet" />
+                <ScalarProperty Name="StatusDescription" ColumnName="StatusDescription" />
+                <ScalarProperty Name="DateStored" ColumnName="DateStored" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="Expires" ColumnName="Expires" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="AbsoluteUri" ColumnName="AbsoluteUri" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrefetchOrders">
+            <EntityTypeMapping TypeName="DatabaseModel.PrefetchOrders">
+              <MappingFragment StoreEntitySet="PrefetchOrders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="IsScheduled" ColumnName="IsScheduled" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ToAbsoluteUri" ColumnName="ToAbsoluteUri" />
+                <ScalarProperty Name="ToTitle" ColumnName="ToTitle" />
+                <ScalarProperty Name="FromAbsoluteUri" ColumnName="FromAbsoluteUri" />
+                <ScalarProperty Name="FromTitle" ColumnName="FromTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
+</edmx:Mappings>
+</edmx:Runtime>
+<edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+<Connection><DesignerInfoPropertySet><DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" /></DesignerInfoPropertySet></Connection>
+<edmx:Options><DesignerInfoPropertySet><DesignerProperty Name="ValidateOnBuild" Value="True" /><DesignerProperty Name="EnablePluralization" Value="False" /><DesignerProperty Name="IncludeForeignKeysInModel" Value="True" /><DesignerProperty Name="CodeGenerationStrategy" Value="Default" /></DesignerInfoPropertySet></edmx:Options>
+<edmx:Diagrams >
+      <Diagram Name="Database">
+        <EntityTypeShape EntityType="DatabaseModel.Blacklist" Width="1.5" PointX="2.75" PointY="4.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Users" Width="1.5" PointX="4.75" PointY="4.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.CacheUpdates" Width="1.5" PointX="5.375" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="DatabaseModel.CacheHeaders" Width="1.5" PointX="2.75" PointY="1.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="DatabaseModel.Caches" Width="1.5" PointX="0.5" PointY="0.875" Height="3.7109993489583317" />
+        <AssociationConnector Association="DatabaseModel.FK_CacheHeaders_Caches" >
+          <ConnectorPoint PointX="2" PointY="2.7401432291666659" />
+          <ConnectorPoint PointX="2.75" PointY="2.7401432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DatabaseModel.PrefetchOrders" Width="1.5" PointX="7.375" PointY="0.75" Height="3.5186979166666674" />
+      </Diagram>
+    </edmx:Diagrams>
+</edmx:Designer></edmx:Edmx>

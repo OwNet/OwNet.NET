@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IPhoneAppService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:8451/v3/PhoneAppService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPhoneAppService"
+                contract="PhoneAppCentralService.IPhoneAppService" name="BasicHttpBinding_IPhoneAppService" />
+        </client>
+    </system.serviceModel>
+</configuration>

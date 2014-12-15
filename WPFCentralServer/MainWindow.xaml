@@ -1,0 +1,12 @@
+﻿<Window x:Class="WPFCentralServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OweNet - Central Server" Height="406" Width="472" Closing="Window_Closing">
+    <Grid>
+        <ListBox Margin="12,12,12,41" Name="listLog" />
+        <Button Content="Stop" Height="23" HorizontalAlignment="Left" Margin="93,0,0,12" Name="buttonStop" VerticalAlignment="Bottom" Width="75" Click="buttonStop_Click" IsEnabled="False" />
+        <Button Content="Start" Height="23" HorizontalAlignment="Left" Margin="12,0,0,12" Name="buttonStart" VerticalAlignment="Bottom" Width="75" Click="buttonStart_Click" />
+        <Button Content="Logs" Margin="0,0,12,12" Name="buttonLogs" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="buttonLogs_Click" />
+        <Button Content="Servers" Height="23" HorizontalAlignment="Right" Margin="0,0,93,12" Name="buttonServers" VerticalAlignment="Bottom" Width="75" Click="buttonServers_Click" />
+    </Grid>
+</Window>

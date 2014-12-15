@@ -1,0 +1,30 @@
+﻿<Window x:Class="WPFServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OwNet Server" Height="446" Width="541" Closing="Window_Closing" Closed="Window_Closed"
+        StateChanged="OnStateChanged" IsVisibleChanged="OnIsVisibleChanged">
+    <Grid>
+        <Menu Height="23" HorizontalAlignment="Left" Name="menuBar" VerticalAlignment="Top" Width="Auto">
+            <MenuItem Header="File" Click="MenuItem_Click">
+                <MenuItem Name="menuItemUsers" Header="Register Teacher" />
+                <MenuItem Name="menuItemExit" Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Tools" Click="MenuItem_Click">
+                <MenuItem Name="menuItemShowLogs" Header="Show Logs" />
+                <MenuItem Name="menuItemClearCache" Header="Delete Cache" />
+                <MenuItem Name="menuItemClearContent" Header="Delete Activities" />
+                <MenuItem Name="menuItemReportNow" Header="Report Logs To Central Service Now" />
+                <MenuItem Name="menuItemGetUpdatesNow" Header="Get Updates From Central Service Now" />
+                <MenuItem Name="menuItemOptions" Header="Options" />
+            </MenuItem>
+        </Menu>
+        <Label Content="OwNet Server" Height="66" HorizontalAlignment="Left" Margin="14,20,0,0" Name="labelHeading" VerticalAlignment="Top" Width="432" Foreground="#FF0933A9" FontSize="40" />
+        <ListBox VirtualizingStackPanel.IsVirtualizing="True" Name="InfoBox" Margin="12,114,12,57" />
+        <Label Content="School name:" Height="28" HorizontalAlignment="Left" Margin="12,80,0,0" Name="label1" VerticalAlignment="Top" FontWeight="Bold" />
+        <TextBox Height="23" Margin="103,82,12,0" Name="txtServerName" VerticalAlignment="Top" TextChanged="txtServerName_TextChanged" />
+        <Button Name="StopButton" IsEnabled="false" Content="Stop Server" Height="39" Click="Button_Stop_clicked" Margin="118,0,0,12" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+        <Button Name="StartButton" Content="Start Server" Height="39" Click="Button_Start_clicked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Margin="12,0,0,12" />
+        <Label Content="v0.0.1" Height="28" HorizontalAlignment="Left" Margin="278,50,0,0" Name="labelVersion" VerticalAlignment="Top" />
+    </Grid>
+        
+</Window>

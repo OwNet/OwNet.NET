@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Live</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+    <base href="http://my.ownet/" />
+<!--	<link rel="stylesheet" type="text/css" href="css/starrating.css" media="screen"/>-->
+	<link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+	<script type="text/javascript" src='js/jquery.js'></script>
+	
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <!-- qTip -->
+	<script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+
+	
+	<!-- Hlavne CSS musi byt napisane ako posledne CSS -->
+	<link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+	
+	<script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+    <script type="text/javascript"><!--
+        $(function () {
+            $("#tab-links").organicTabs({ "speed": 250 });
+        });
+        $(document).ready(function () {
+            // otvorime tooltip pre danu sekcii
+            OwnetTooltip("live");
+
+            $('#send_message_form').submit(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "live/send",
+                    data: { message: $('#message').val() },
+                    success: function () {
+                        $('#message').val('');
+                        $('#send_button').attr('disabled', true);
+                    }
+                });
+                return false;
+            });
+
+            refreshStream();
+        });
+        function refreshStream() {
+          var lastDate = $('#livestream .full_activity_time:first').text();
+          $.get(lastDate == "" ? 'live/stream' : 'live/stream?last_activity=' + lastDate,
+            function (data) {
+              try {
+                if (data.substring(0, 14) == "<!-- Error -->") {
+                  $('#messages').hide();
+                } else {
+                  $('#messages').show();
+                  $('#livestream').prepend(data);
+                }
+              }
+              catch (e) {}
+              finally {
+                setTimeout(refreshStream, 3000);
+                $('#send_button').attr('disabled', false);
+              }
+            });
+        }
+    --></script>
+</head>
+<body>
+
+
+<div id="content">
+	<div id="page-top-lath"></div>
+	<div id="page">
+	
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+		
+		</div>
+	       <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close"></div>
+			<strong>LIVE</strong> » Here you can talk to people on your OwNet and see what's happening live.
+		</div>
+        
+        <!-- Tab links -->
+        <div id="tab-links">
+			<h1><img src="graphics/live.png" class="img-15" alt=""/> OwNet Live</h1>	
+			<div class="clear"></div>	
+			
+			<!-- Messages Form -->
+			<h2 style="margin-top: 15px;">Create message</h2>
+			<div id="messages">
+				<form action="live/messages/send" method="get" id="send_message_form">
+					<div class="cleaner">
+					  <textarea rows="2" cols="80" id="message" class="input" style="height: 70px; width: 99%; font-size: 12px;"></textarea><br />
+					  <input type="submit" class="button_search" value="Send message" id="send_button" style="float: right; width: 150px;">
+					</div>
+				</form>
+			</div>
+
+			<h2>Live stream</h2>
+			<table class="table_links" id="livestream">
+			</table>
+			<script type="text/javascript">
+			    $(document).ready(function () { TabLoad('livestream', 'live/stream'); });
+			</script>
+        </div>
+    </div>
+
+	<!-- Footer of page -->
+    <div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8451/v3/PhoneAppService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" />
+  <xs:import schemaLocation="http://localhost:8451/v3/PhoneAppService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" />
+  <xs:element name="GetGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="since" type="xs:dateTime" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" minOccurs="0" name="authenticatedUser" nillable="true" type="q1:AuthenticatedUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGroupsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" minOccurs="0" name="GetGroupsResult" nillable="true" type="q2:ArrayOfGroupReport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGroupRecommendations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="groupId" type="xs:int" />
+        <xs:element minOccurs="0" name="since" type="xs:dateTime" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" minOccurs="0" name="authenticatedUser" nillable="true" type="q3:AuthenticatedUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGroupRecommendationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" minOccurs="0" name="GetGroupRecommendationsResult" nillable="true" type="q4:ArrayOfGroupRecommendationReport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWebsiteContent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWebsiteContentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" minOccurs="0" name="GetWebsiteContentResult" nillable="true" type="q5:WebsiteContent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllServerInfos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllServerInfosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" minOccurs="0" name="GetAllServerInfosResult" nillable="true" type="q6:ArrayOfServerInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Authenticate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" minOccurs="0" name="request" nillable="true" type="q7:AuthenticateUserRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v3" minOccurs="0" name="AuthenticateResult" nillable="true" type="q8:AuthenticateUserResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

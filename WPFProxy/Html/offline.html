@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Internet Connection Not Available</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+	<base href="http://my.ownet/" />
+	<link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+
+	<link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+
+	<script type="text/javascript" src='js/jquery.js'></script>
+
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+    	
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<!-- qTip -->
+<script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+	<script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+    <script type="text/javascript">
+    <!--
+        $(function () {
+            $("#tab-links").organicTabs({ "speed": 250 });
+        });
+    
+        $(document).ready(function () {
+            // otvorime tooltip pre danu sekcii
+            OwnetTooltip("offline");
+        });
+    --></script>
+
+</head>
+
+<body>
+<div id="content">
+	<div id="page-top-lath"></div>
+	<div id="page">
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+            <div id="menu">
+                <div class="left">
+	                <span class="ownet_icon"><a href="index.html" title="Home owNET"><img src="graphics/ownet.png" alt="My.owNET"/></a></span> |
+	                <a href="live/" title="">Live</a> |
+	                <a href="rating/" title="">Ratings</a> |
+	                <a href="recommend/" title="">Recommendations</a> |
+	                <a href="files/" title="">Shared Files</a> |
+	                <a href="history/" title="">History</a>
+                </div>
+            </div>
+		</div>
+		
+        <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close" /></div>
+			<strong>DOWNLOAD ORDER</strong> » Plan the download of this website later, when you get online.
+		</div>
+
+
+		<!-- Tab links -->
+        <div id="tab-links">
+        <!-- Page 404 Promo Text -->
+			<div id="page404">
+				<div class="page404_title"><img src="graphics/flag_orange.png" class="img-15" style="margin-right: 20px;" alt="" />Connection not available</div>
+				<div class="page404_about">
+				OwNet cannnot download the website you have requested. You may have lost internet connection.<br />
+                If you want to order download of this website later, when you get online, use the form below.
+				</div>
+			</div>
+
+			<div id="register" class="cleaner">
+				<div id="tab-login" style="width: 90%; margin: 0px auto 20px auto;">
+					<!-- Prefetching form -->
+					<form action="http://my.ownet/prefetch/create" method="post">  
+						<table class="table_login">
+							<tr>
+								<td class="table_header_404"><strong>Website</strong></td>
+								<td class="table_content"><input type="text" name="totitle" class="input_404" id="totitle" value="Write your message here" /></td>
+							</tr>
+							<tr>
+								<td class="table_header_404"><strong>URL</strong></td>
+								<td class="table_content"><input type="text" name="touri" class="input_404" id="touri" value="" /></td>
+							</tr>
+							<tr>
+								<td class="table_header_404 center"></td>
+								<td class="table_submit_reg" style="text-align: center;"><input name="submit-register" type="submit" class="button_login" style="width: 300px;" value="Yes, I want to download this website later"/></td>
+							</tr>
+						</table>
+                        <input type="hidden" name="fromuri" id="fromuri" value="" />
+					</form>
+				</div>
+			</div>
+         </div>			
+	</div>
+	
+	<!-- Footer of page -->
+		<div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>

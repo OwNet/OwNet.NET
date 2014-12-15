@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Homepage</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+	<base href="http://my.ownet/" />
+
+<!--	<link rel="stylesheet" type="text/css" href="css/starrating.css" media="screen"/>-->
+	<link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+	<script type="text/javascript" src='js/jquery.js'></script>
+	
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <!-- qTip -->
+	<script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+
+	
+	<!-- Hlavne CSS musi byt napisane ako posledne CSS -->
+	<link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+	
+	<script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+    <script type="text/javascript"><!--
+        $(function () {
+            $("#tab-links").organicTabs({ "speed": 250 });
+        });
+        $(document).ready(function () {
+            // otvorime tooltip pre danu sekcii
+            OwnetTooltip("index");
+        });
+    --></script>
+</head>
+<body>
+
+
+<div id="content">
+	<div id="page-top-lath"></div>
+	<div id="page">
+	
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+			
+		</div>
+	       <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close" /></div>
+			<strong>HOMEPAGE</strong> » Here you can find most popular tags and recent activities.
+		</div>
+    	
+
+		<!-- Search Form -->
+		<div id="search">	
+			<div id="search-logo"><img src="graphics/ownet1.png" alt="owNET"/></div>
+			<form action="search/index.html" method="get">  
+				<div>
+					<input type="text" class="input_search" size="40" autocomplete="off" placeholder="Search keywords" name="query" />  
+					<input type="submit" class="button_search" value="Search" /> <br />
+                    <input type="radio" name="type" value="local" id="Radio1" checked="checked" /> Local search
+                    <input type="radio" id="Radio2" name="type" value="server" /> Search on network
+                    <input type="radio" id="Radio3" name="type" value="tags" /> Search by tags
+				</div>
+			</form> 
+		</div>	
+		
+		<!-- Top Search Queries -->
+		<fieldset id="tags">
+			<legend>Tag Cloud</legend>
+			<div id="keywords">
+		
+			</div>
+
+            <script type="text/javascript">
+                $(document).ready(function () { TabLoad('keywords', 'tag/cloud'); });
+			</script>
+		</fieldset>
+		
+		
+		<!-- Services banner -->
+	<!--	<div id="services" class="cleaner">
+			<div id="service1">Service 1</a></div>
+			<div id="service2">Service 2</a></div>
+			<div id="service3">Service 3</a></div>
+		</div>
+		-->
+		<!-- Search Results -->
+		<div id="search-links">
+			<h2>Activity Stream</h2>
+			<!-- Today -->
+            <div id="activitystream">
+            </div>
+			<script type="text/javascript">
+			    $(document).ready(function () { TabLoad('activitystream', 'activity/list?page=1'); });
+			</script>
+		</div>
+	</div>
+	
+	<!-- Footer of page -->
+		<div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>

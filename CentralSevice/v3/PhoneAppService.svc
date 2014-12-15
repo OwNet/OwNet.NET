@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CentralServerShared.v3.PhoneAppService" CodeBehind="PhoneAppService.svc.cs" %>

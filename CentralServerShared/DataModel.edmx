@@ -1,0 +1,1185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Servers" EntityType="DataModel.Store.Servers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AccessLogs" EntityType="DataModel.Store.AccessLogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Caches" EntityType="DataModel.Store.Caches" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecommendedUpdates" EntityType="DataModel.Store.RecommendedUpdates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PreviousUpdates" EntityType="DataModel.Store.PreviousUpdates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActivityLogs" EntityType="DataModel.Store.ActivityLogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Groups" EntityType="DataModel.Store.Groups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tags" EntityType="DataModel.Store.Tags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Recommendations" EntityType="DataModel.Store.Recommendations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupServers" EntityType="DataModel.Store.GroupServers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Predictions" EntityType="DataModel.Store.Predictions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DataModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserCookies" EntityType="DataModel.Store.UserCookies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserGroups" EntityType="DataModel.Store.UserGroups" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CacheAccessLog" Association="DataModel.Store.CacheAccessLog">
+      <End Role="Cache" EntitySet="Caches" />
+      <End Role="AccessLog" EntitySet="AccessLogs" />
+    </AssociationSet>
+    <AssociationSet Name="CacheRecommendedUpdate" Association="DataModel.Store.CacheRecommendedUpdate">
+      <End Role="Cache" EntitySet="Caches" />
+      <End Role="RecommendedUpdate" EntitySet="RecommendedUpdates" />
+    </AssociationSet>
+    <AssociationSet Name="ServerCache" Association="DataModel.Store.ServerCache">
+      <End Role="Server" EntitySet="Servers" />
+      <End Role="Cache" EntitySet="Caches" />
+    </AssociationSet>
+    <AssociationSet Name="CachePreviousUpdate" Association="DataModel.Store.CachePreviousUpdate">
+      <End Role="Cache" EntitySet="Caches" />
+      <End Role="PreviousUpdate" EntitySet="PreviousUpdates" />
+    </AssociationSet>
+    <AssociationSet Name="ServerActivityLog" Association="DataModel.Store.ServerActivityLog">
+      <End Role="Server" EntitySet="Servers" />
+      <End Role="ActivityLog" EntitySet="ActivityLogs" />
+    </AssociationSet>
+    <AssociationSet Name="ServerRecommendedUpdate" Association="DataModel.Store.ServerRecommendedUpdate">
+      <End Role="Server" EntitySet="Servers" />
+      <End Role="RecommendedUpdate" EntitySet="RecommendedUpdates" />
+    </AssociationSet>
+    <AssociationSet Name="GroupRecommendation" Association="DataModel.Store.GroupRecommendation">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="Recommendation" EntitySet="Recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="ServerGroupServer" Association="DataModel.Store.ServerGroupServer">
+      <End Role="Server" EntitySet="Servers" />
+      <End Role="GroupServer" EntitySet="GroupServers" />
+    </AssociationSet>
+    <AssociationSet Name="GroupGroupServer" Association="DataModel.Store.GroupGroupServer">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="GroupServer" EntitySet="GroupServers" />
+    </AssociationSet>
+    <AssociationSet Name="ServerRecommendation" Association="DataModel.Store.ServerRecommendation">
+      <End Role="Server" EntitySet="Servers" />
+      <End Role="Recommendation" EntitySet="Recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="GroupTag" Association="DataModel.Store.GroupTag">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="Tag" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="PredictionServer" Association="DataModel.Store.PredictionServer">
+      <End Role="Prediction" EntitySet="Predictions" />
+      <End Role="Server" EntitySet="Servers" />
+    </AssociationSet>
+    <AssociationSet Name="ServerUser" Association="DataModel.Store.ServerUser">
+      <End Role="Server" EntitySet="Servers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserCookies" Association="DataModel.Store.UserUserCookies">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserCookies" EntitySet="UserCookies" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserGroups" Association="DataModel.Store.UserUserGroups">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserGroups" EntitySet="UserGroups" />
+    </AssociationSet>
+    <AssociationSet Name="GroupUserGroups" Association="DataModel.Store.GroupUserGroups">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="UserGroups" EntitySet="UserGroups" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Servers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="ServerName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccessLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DownloadedFrom" Type="int" Nullable="false" />
+    <Property Name="FetchDuration" Type="float" Nullable="false" />
+    <Property Name="AccessedAt" Type="datetime" Nullable="false" />
+    <Property Name="CacheCreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Cache_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Caches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AbsoluteUri" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime" Nullable="true" />
+    <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+    <Property Name="Hash" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UriHash" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Size" Type="bigint" Nullable="false" />
+    <Property Name="Server_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecommendedUpdates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="Sent" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="Priority" Type="int" Nullable="false" DefaultValue="10" />
+    <Property Name="Cache_Id" Type="int" Nullable="false" />
+    <Property Name="Server_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PreviousUpdates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="HoursSincePreviousUpdate" Type="float" Nullable="false" />
+    <Property Name="Success" Type="bit" Nullable="false" />
+    <Property Name="Cache_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActivityLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AbsoluteUri" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Action" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="UserFirstname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserSurname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ServerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="Group_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recommendations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AbsoluteUri" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="Group_Id" Type="int" Nullable="false" />
+    <Property Name="Server_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupServers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="Server_Id" Type="int" Nullable="false" />
+    <Property Name="Group_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Predictions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="PagesCount" Type="int" Nullable="false" />
+    <Property Name="LinksCount" Type="int" Nullable="false" />
+    <Property Name="LastPrediction" Type="datetime" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Server_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PasswordSalt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="Server_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserCookies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cookie" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Group_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CacheAccessLog">
+    <End Role="Cache" Type="DataModel.Store.Caches" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessLog" Type="DataModel.Store.AccessLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cache">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccessLog">
+        <PropertyRef Name="Cache_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CacheRecommendedUpdate">
+    <End Role="Cache" Type="DataModel.Store.Caches" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RecommendedUpdate" Type="DataModel.Store.RecommendedUpdates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cache">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecommendedUpdate">
+        <PropertyRef Name="Cache_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServerCache">
+    <End Role="Server" Type="DataModel.Store.Servers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cache" Type="DataModel.Store.Caches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cache">
+        <PropertyRef Name="Server_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CachePreviousUpdate">
+    <End Role="Cache" Type="DataModel.Store.Caches" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PreviousUpdate" Type="DataModel.Store.PreviousUpdates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cache">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PreviousUpdate">
+        <PropertyRef Name="Cache_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServerActivityLog">
+    <End Role="Server" Type="DataModel.Store.Servers" Multiplicity="1" />
+    <End Role="ActivityLog" Type="DataModel.Store.ActivityLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActivityLog">
+        <PropertyRef Name="ServerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServerRecommendedUpdate">
+    <End Role="Server" Type="DataModel.Store.Servers" Multiplicity="1" />
+    <End Role="RecommendedUpdate" Type="DataModel.Store.RecommendedUpdates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecommendedUpdate">
+        <PropertyRef Name="Server_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupRecommendation">
+    <End Role="Group" Type="DataModel.Store.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Recommendation" Type="DataModel.Store.Recommendations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Recommendation">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServerGroupServer">
+    <End Role="Server" Type="DataModel.Store.Servers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GroupServer" Type="DataModel.Store.GroupServers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupServer">
+        <PropertyRef Name="Server_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupGroupServer">
+    <End Role="Group" Type="DataModel.Store.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GroupServer" Type="DataModel.Store.GroupServers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupServer">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServerRecommendation">
+    <End Role="Server" Type="DataModel.Store.Servers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Recommendation" Type="DataModel.Store.Recommendations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Recommendation">
+        <PropertyRef Name="Server_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupTag">
+    <End Role="Group" Type="DataModel.Store.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tag" Type="DataModel.Store.Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tag">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PredictionServer">
+    <End Role="Prediction" Type="DataModel.Store.Predictions" Multiplicity="*" />
+    <End Role="Server" Type="DataModel.Store.Servers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prediction">
+        <PropertyRef Name="Server_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServerUser">
+    <End Role="Server" Type="DataModel.Store.Servers" Multiplicity="1" />
+    <End Role="User" Type="DataModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Server_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserUserCookies">
+    <End Role="User" Type="DataModel.Store.Users" Multiplicity="1" />
+    <End Role="UserCookies" Type="DataModel.Store.UserCookies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCookies">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserUserGroups">
+    <End Role="User" Type="DataModel.Store.Users" Multiplicity="1" />
+    <End Role="UserGroups" Type="DataModel.Store.UserGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroups">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupUserGroups">
+    <End Role="Group" Type="DataModel.Store.Groups" Multiplicity="1" />
+    <End Role="UserGroups" Type="DataModel.Store.UserGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroups">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Servers" EntityType="DataModel.Server" />
+          <EntitySet Name="AccessLogs" EntityType="DataModel.AccessLog" />
+          <EntitySet Name="Caches" EntityType="DataModel.Cache" />
+          <AssociationSet Name="CacheAccessLog" Association="DataModel.CacheAccessLog">
+            <End Role="Cache" EntitySet="Caches" />
+            <End Role="AccessLog" EntitySet="AccessLogs" />
+          </AssociationSet>
+          <EntitySet Name="RecommendedUpdates" EntityType="DataModel.RecommendedUpdate" />
+          <AssociationSet Name="CacheRecommendedUpdate" Association="DataModel.CacheRecommendedUpdate">
+            <End Role="Cache" EntitySet="Caches" />
+            <End Role="RecommendedUpdate" EntitySet="RecommendedUpdates" />
+          </AssociationSet>
+          <AssociationSet Name="ServerCache" Association="DataModel.ServerCache">
+            <End Role="Server" EntitySet="Servers" />
+            <End Role="Cache" EntitySet="Caches" />
+          </AssociationSet>
+          <EntitySet Name="PreviousUpdates" EntityType="DataModel.PreviousUpdate" />
+          <AssociationSet Name="CachePreviousUpdate" Association="DataModel.CachePreviousUpdate">
+            <End Role="Cache" EntitySet="Caches" />
+            <End Role="PreviousUpdate" EntitySet="PreviousUpdates" />
+          </AssociationSet>
+          <EntitySet Name="ActivityLogs" EntityType="DataModel.ActivityLog" />
+          <AssociationSet Name="ServerActivityLog" Association="DataModel.ServerActivityLog">
+            <End Role="Server" EntitySet="Servers" />
+            <End Role="ActivityLog" EntitySet="ActivityLogs" />
+          </AssociationSet>
+          <AssociationSet Name="ServerRecommendedUpdate" Association="DataModel.ServerRecommendedUpdate">
+            <End Role="Server" EntitySet="Servers" />
+            <End Role="RecommendedUpdate" EntitySet="RecommendedUpdates" />
+          </AssociationSet>
+          <EntitySet Name="Groups" EntityType="DataModel.Group" />
+          <EntitySet Name="Tags" EntityType="DataModel.Tag" />
+          <EntitySet Name="Recommendations" EntityType="DataModel.Recommendation" />
+          <AssociationSet Name="GroupRecommendation" Association="DataModel.GroupRecommendation">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Recommendation" EntitySet="Recommendations" />
+          </AssociationSet>
+          <EntitySet Name="GroupServers" EntityType="DataModel.GroupServer" />
+          <AssociationSet Name="ServerGroupServer" Association="DataModel.ServerGroupServer">
+            <End Role="Server" EntitySet="Servers" />
+            <End Role="GroupServer" EntitySet="GroupServers" />
+          </AssociationSet>
+          <AssociationSet Name="GroupGroupServer" Association="DataModel.GroupGroupServer">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="GroupServer" EntitySet="GroupServers" />
+          </AssociationSet>
+          <AssociationSet Name="ServerRecommendation" Association="DataModel.ServerRecommendation">
+            <End Role="Server" EntitySet="Servers" />
+            <End Role="Recommendation" EntitySet="Recommendations" />
+          </AssociationSet>
+          <AssociationSet Name="GroupTag" Association="DataModel.GroupTag">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
+          <EntitySet Name="Predictions" EntityType="DataModel.Prediction" />
+          <AssociationSet Name="PredictionServer" Association="DataModel.PredictionServer">
+            <End Role="Prediction" EntitySet="Predictions" />
+            <End Role="Server" EntitySet="Servers" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="DataModel.User" />
+          <AssociationSet Name="ServerUser" Association="DataModel.ServerUser">
+            <End Role="Server" EntitySet="Servers" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="UserCookies" EntityType="DataModel.UserCookie" />
+          <AssociationSet Name="UserUserCookies" Association="DataModel.UserUserCookies">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserCookies" EntitySet="UserCookies" />
+          </AssociationSet>
+          <EntitySet Name="UserGroups" EntityType="DataModel.UserGroup" />
+          <AssociationSet Name="UserUserGroups" Association="DataModel.UserUserGroups">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserGroups" EntitySet="UserGroups" />
+          </AssociationSet>
+          <AssociationSet Name="GroupUserGroups" Association="DataModel.GroupUserGroups">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="UserGroups" EntitySet="UserGroups" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Server">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <NavigationProperty Name="Caches" Relationship="DataModel.ServerCache" FromRole="Server" ToRole="Cache" />
+          <NavigationProperty Name="ActivityLogs" Relationship="DataModel.ServerActivityLog" FromRole="Server" ToRole="ActivityLog" />
+          <NavigationProperty Name="RecommendedUpdates" Relationship="DataModel.ServerRecommendedUpdate" FromRole="Server" ToRole="RecommendedUpdate" />
+          <Property Type="String" Name="ServerName" Nullable="false" />
+          <NavigationProperty Name="GroupServers" Relationship="DataModel.ServerGroupServer" FromRole="Server" ToRole="GroupServer" />
+          <NavigationProperty Name="Recommendations" Relationship="DataModel.ServerRecommendation" FromRole="Server" ToRole="Recommendation" />
+          <NavigationProperty Name="Prediction" Relationship="DataModel.PredictionServer" FromRole="Server" ToRole="Prediction" />
+          <NavigationProperty Name="Users" Relationship="DataModel.ServerUser" FromRole="Server" ToRole="User" />
+        </EntityType>
+        <EntityType Name="AccessLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DownloadedFrom" Nullable="false" />
+          <Property Type="Double" Name="FetchDuration" Nullable="false" />
+          <Property Type="DateTime" Name="AccessedAt" Nullable="false" />
+          <NavigationProperty Name="Cache" Relationship="DataModel.CacheAccessLog" FromRole="AccessLog" ToRole="Cache" />
+          <Property Type="DateTime" Name="CacheCreatedAt" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cache">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AbsoluteUri" Nullable="false" />
+          <NavigationProperty Name="AccessLogs" Relationship="DataModel.CacheAccessLog" FromRole="Cache" ToRole="AccessLog" />
+          <NavigationProperty Name="RecommendedUpdates" Relationship="DataModel.CacheRecommendedUpdate" FromRole="Cache" ToRole="RecommendedUpdate" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateAt" Nullable="true" />
+          <Property Type="DateTime" Name="DateUpdated" Nullable="false" />
+          <Property Type="String" Name="Hash" Nullable="false" />
+          <NavigationProperty Name="Server" Relationship="DataModel.ServerCache" FromRole="Cache" ToRole="Server" />
+          <Property Type="Int32" Name="UriHash" Nullable="false" />
+          <NavigationProperty Name="PreviousUpdates" Relationship="DataModel.CachePreviousUpdate" FromRole="Cache" ToRole="PreviousUpdate" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int64" Name="Size" Nullable="false" />
+        </EntityType>
+        <Association Name="CacheAccessLog">
+          <End Type="DataModel.Cache" Role="Cache" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.AccessLog" Role="AccessLog" Multiplicity="*" />
+        </Association>
+        <EntityType Name="RecommendedUpdate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="Boolean" Name="Sent" Nullable="false" DefaultValue="false" />
+          <NavigationProperty Name="Cache" Relationship="DataModel.CacheRecommendedUpdate" FromRole="RecommendedUpdate" ToRole="Cache" />
+          <Property Type="Int32" Name="Priority" Nullable="false" DefaultValue="10" />
+          <NavigationProperty Name="Server" Relationship="DataModel.ServerRecommendedUpdate" FromRole="RecommendedUpdate" ToRole="Server" />
+        </EntityType>
+        <Association Name="CacheRecommendedUpdate">
+          <End Type="DataModel.Cache" Role="Cache" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.RecommendedUpdate" Role="RecommendedUpdate" Multiplicity="*" />
+        </Association>
+        <Association Name="ServerCache">
+          <End Type="DataModel.Server" Role="Server" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.Cache" Role="Cache" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PreviousUpdate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Double" Name="HoursSincePreviousUpdate" Nullable="false" />
+          <Property Type="Boolean" Name="Success" Nullable="false" />
+          <NavigationProperty Name="Cache" Relationship="DataModel.CachePreviousUpdate" FromRole="PreviousUpdate" ToRole="Cache" />
+        </EntityType>
+        <Association Name="CachePreviousUpdate">
+          <End Type="DataModel.Cache" Role="Cache" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.PreviousUpdate" Role="PreviousUpdate" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ActivityLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AbsoluteUri" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Message" Nullable="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="false" />
+          <Property Type="Int32" Name="Action" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="UserFirstname" Nullable="false" />
+          <Property Type="String" Name="UserSurname" Nullable="false" />
+          <NavigationProperty Name="Server" Relationship="DataModel.ServerActivityLog" FromRole="ActivityLog" ToRole="Server" />
+          <Property Type="Int32" Name="ServerId" Nullable="false" />
+        </EntityType>
+        <Association Name="ServerActivityLog">
+          <End Type="DataModel.Server" Role="Server" Multiplicity="1" />
+          <End Type="DataModel.ActivityLog" Role="ActivityLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Server">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityLog">
+              <PropertyRef Name="ServerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServerRecommendedUpdate">
+          <End Type="DataModel.Server" Role="Server" Multiplicity="1" >
+          </End>
+          <End Type="DataModel.RecommendedUpdate" Role="RecommendedUpdate" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Recommendations" Relationship="DataModel.GroupRecommendation" FromRole="Group" ToRole="Recommendation" />
+          <NavigationProperty Name="GroupServers" Relationship="DataModel.GroupGroupServer" FromRole="Group" ToRole="GroupServer" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <NavigationProperty Name="Tags" Relationship="DataModel.GroupTag" FromRole="Group" ToRole="Tag" />
+          <NavigationProperty Name="UserGroups" Relationship="DataModel.GroupUserGroups" FromRole="Group" ToRole="UserGroups" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Value" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="DataModel.GroupTag" FromRole="Tag" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Recommendation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AbsoluteUri" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="DataModel.GroupRecommendation" FromRole="Recommendation" ToRole="Group" />
+          <NavigationProperty Name="Server" Relationship="DataModel.ServerRecommendation" FromRole="Recommendation" ToRole="Server" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+        </EntityType>
+        <Association Name="GroupRecommendation">
+          <End Type="DataModel.Group" Role="Group" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.Recommendation" Role="Recommendation" Multiplicity="*" />
+        </Association>
+        <EntityType Name="GroupServer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Server" Relationship="DataModel.ServerGroupServer" FromRole="GroupServer" ToRole="Server" />
+          <NavigationProperty Name="Group" Relationship="DataModel.GroupGroupServer" FromRole="GroupServer" ToRole="Group" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+        </EntityType>
+        <Association Name="ServerGroupServer">
+          <End Type="DataModel.Server" Role="Server" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.GroupServer" Role="GroupServer" Multiplicity="*" />
+        </Association>
+        <Association Name="GroupGroupServer">
+          <End Type="DataModel.Group" Role="Group" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.GroupServer" Role="GroupServer" Multiplicity="*" />
+        </Association>
+        <Association Name="ServerRecommendation">
+          <End Type="DataModel.Server" Role="Server" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.Recommendation" Role="Recommendation" Multiplicity="*" />
+        </Association>
+        <Association Name="GroupTag">
+          <End Type="DataModel.Group" Role="Group" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataModel.Tag" Role="Tag" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Prediction" >
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Server" Relationship="DataModel.PredictionServer" FromRole="Prediction" ToRole="Server" />
+          <Property Type="Int32" Name="PagesCount" Nullable="false" />
+          <Property Type="Int32" Name="LinksCount" Nullable="false" />
+          <Property Type="DateTime" Name="LastPrediction" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="PredictionServer">
+          <End Type="DataModel.Prediction" Role="Prediction" Multiplicity="0..1" />
+          <End Type="DataModel.Server" Role="Server" Multiplicity="1" />
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Server" Relationship="DataModel.ServerUser" FromRole="User" ToRole="Server" />
+          <Property Type="String" Name="Username" Nullable="false" />
+          <Property Type="String" Name="PasswordHash" Nullable="false" />
+          <Property Type="String" Name="PasswordSalt" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="Surname" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <NavigationProperty Name="UserCookies" Relationship="DataModel.UserUserCookies" FromRole="User" ToRole="UserCookies" />
+          <NavigationProperty Name="UserGroups" Relationship="DataModel.UserUserGroups" FromRole="User" ToRole="UserGroups" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+        </EntityType>
+        <Association Name="ServerUser">
+          <End Type="DataModel.Server" Role="Server" Multiplicity="1" />
+          <End Type="DataModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UserCookie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Cookie" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DataModel.UserUserCookies" FromRole="UserCookies" ToRole="User" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+        </EntityType>
+        <Association Name="UserUserCookies">
+          <End Type="DataModel.User" Role="User" Multiplicity="1" />
+          <End Type="DataModel.UserCookie" Role="UserCookies" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="DataModel.UserUserGroups" FromRole="UserGroups" ToRole="User" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="DataModel.GroupUserGroups" FromRole="UserGroups" ToRole="Group" />
+        </EntityType>
+        <Association Name="UserUserGroups">
+          <End Type="DataModel.User" Role="User" Multiplicity="1" />
+          <End Type="DataModel.UserGroup" Role="UserGroups" Multiplicity="*" />
+        </Association>
+        <Association Name="GroupUserGroups">
+          <End Type="DataModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DataModel.UserGroup" Role="UserGroups" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer">
+    <EntitySetMapping Name="Servers">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Server)">
+        <MappingFragment StoreEntitySet="Servers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccessLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.AccessLog)">
+        <MappingFragment StoreEntitySet="AccessLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DownloadedFrom" ColumnName="DownloadedFrom" />
+          <ScalarProperty Name="FetchDuration" ColumnName="FetchDuration" />
+          <ScalarProperty Name="AccessedAt" ColumnName="AccessedAt" />
+          <ScalarProperty Name="CacheCreatedAt" ColumnName="CacheCreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Caches">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Cache)">
+        <MappingFragment StoreEntitySet="Caches">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AbsoluteUri" ColumnName="AbsoluteUri" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="UriHash" ColumnName="UriHash" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecommendedUpdates">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.RecommendedUpdate)">
+        <MappingFragment StoreEntitySet="RecommendedUpdates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Sent" ColumnName="Sent" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreviousUpdates">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.PreviousUpdate)">
+        <MappingFragment StoreEntitySet="PreviousUpdates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="HoursSincePreviousUpdate" ColumnName="HoursSincePreviousUpdate" />
+          <ScalarProperty Name="Success" ColumnName="Success" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.ActivityLog)">
+        <MappingFragment StoreEntitySet="ActivityLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AbsoluteUri" ColumnName="AbsoluteUri" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserFirstname" ColumnName="UserFirstname" />
+          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+          <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Group)">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Tag)">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recommendations">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Recommendation)">
+        <MappingFragment StoreEntitySet="Recommendations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AbsoluteUri" ColumnName="AbsoluteUri" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupServers">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.GroupServer)">
+        <MappingFragment StoreEntitySet="GroupServers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predictions">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Prediction)">
+        <MappingFragment StoreEntitySet="Predictions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PagesCount" ColumnName="PagesCount" />
+          <ScalarProperty Name="LinksCount" ColumnName="LinksCount" />
+          <ScalarProperty Name="LastPrediction" ColumnName="LastPrediction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCookies">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.UserCookie)">
+        <MappingFragment StoreEntitySet="UserCookies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cookie" ColumnName="Cookie" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.UserGroup)">
+        <MappingFragment StoreEntitySet="UserGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CacheAccessLog" TypeName="DataModel.CacheAccessLog" StoreEntitySet="AccessLogs">
+      <EndProperty Name="Cache">
+        <ScalarProperty Name="Id" ColumnName="Cache_Id" />
+      </EndProperty>
+      <EndProperty Name="AccessLog">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CacheRecommendedUpdate" TypeName="DataModel.CacheRecommendedUpdate" StoreEntitySet="RecommendedUpdates">
+      <EndProperty Name="Cache">
+        <ScalarProperty Name="Id" ColumnName="Cache_Id" />
+      </EndProperty>
+      <EndProperty Name="RecommendedUpdate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServerCache" TypeName="DataModel.ServerCache" StoreEntitySet="Caches">
+      <EndProperty Name="Server">
+        <ScalarProperty Name="Id" ColumnName="Server_Id" />
+      </EndProperty>
+      <EndProperty Name="Cache">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CachePreviousUpdate" TypeName="DataModel.CachePreviousUpdate" StoreEntitySet="PreviousUpdates">
+      <EndProperty Name="Cache">
+        <ScalarProperty Name="Id" ColumnName="Cache_Id" />
+      </EndProperty>
+      <EndProperty Name="PreviousUpdate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServerRecommendedUpdate" TypeName="DataModel.ServerRecommendedUpdate" StoreEntitySet="RecommendedUpdates">
+      <EndProperty Name="Server">
+        <ScalarProperty Name="Id" ColumnName="Server_Id" />
+      </EndProperty>
+      <EndProperty Name="RecommendedUpdate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GroupRecommendation" TypeName="DataModel.GroupRecommendation" StoreEntitySet="Recommendations">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Id" ColumnName="Group_Id" />
+      </EndProperty>
+      <EndProperty Name="Recommendation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServerGroupServer" TypeName="DataModel.ServerGroupServer" StoreEntitySet="GroupServers">
+      <EndProperty Name="Server">
+        <ScalarProperty Name="Id" ColumnName="Server_Id" />
+      </EndProperty>
+      <EndProperty Name="GroupServer">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GroupGroupServer" TypeName="DataModel.GroupGroupServer" StoreEntitySet="GroupServers">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Id" ColumnName="Group_Id" />
+      </EndProperty>
+      <EndProperty Name="GroupServer">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServerRecommendation" TypeName="DataModel.ServerRecommendation" StoreEntitySet="Recommendations">
+      <EndProperty Name="Server">
+        <ScalarProperty Name="Id" ColumnName="Server_Id" />
+      </EndProperty>
+      <EndProperty Name="Recommendation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GroupTag" TypeName="DataModel.GroupTag" StoreEntitySet="Tags">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Id" ColumnName="Group_Id" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PredictionServer" TypeName="DataModel.PredictionServer" StoreEntitySet="Predictions">
+      <EndProperty Name="Server">
+        <ScalarProperty Name="Id" ColumnName="Server_Id" />
+      </EndProperty>
+      <EndProperty Name="Prediction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServerUser" TypeName="DataModel.ServerUser" StoreEntitySet="Users">
+      <EndProperty Name="Server">
+        <ScalarProperty Name="Id" ColumnName="Server_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserUserCookies" TypeName="DataModel.UserUserCookies" StoreEntitySet="UserCookies">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="UserCookies">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserUserGroups" TypeName="DataModel.UserUserGroups" StoreEntitySet="UserGroups">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="UserGroups">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GroupUserGroups" TypeName="DataModel.GroupUserGroups" StoreEntitySet="UserGroups">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Id" ColumnName="Group_Id" />
+      </EndProperty>
+      <EndProperty Name="UserGroups">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="DataModel" ZoomLevel="105" >
+        <EntityTypeShape EntityType="DataModel.Server" Width="1.5" PointX="5.875" PointY="3.25" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="DataModel.AccessLog" Width="1.5" PointX="2.625" PointY="0.625" Height="2.172587890625" />
+        <EntityTypeShape EntityType="DataModel.Cache" Width="1.5" PointX="3.25" PointY="4.625" Height="3.5186979166666656" />
+        <AssociationConnector Association="DataModel.CacheAccessLog">
+          <ConnectorPoint PointX="3.546875" PointY="4.625" />
+          <ConnectorPoint PointX="3.546875" PointY="2.797587890625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.RecommendedUpdate" Width="1.5" PointX="1.25" PointY="5.125" Height="1.7879850260416665" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.CacheRecommendedUpdate">
+          <ConnectorPoint PointX="5.25" PointY="6.2112939453125" />
+          <ConnectorPoint PointX="2.75" PointY="6.2112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.ServerCache">
+          <ConnectorPoint PointX="5.875" PointY="5.4083968098958328" />
+          <ConnectorPoint PointX="4.75" PointY="5.4083968098958328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.PreviousUpdate" Width="1.5" PointX="5.125" PointY="6.875" Height="1.9802864583333335" />
+        <AssociationConnector Association="DataModel.CachePreviousUpdate">
+          <ConnectorPoint PointX="4.75" PointY="7.5093489583333328" />
+          <ConnectorPoint PointX="5.125" PointY="7.5093489583333328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.ActivityLog" Width="1.5" PointX="0.5" PointY="0.5" Height="3.1340950520833326" />
+        <AssociationConnector Association="DataModel.ServerActivityLog">
+          <ConnectorPoint PointX="5.875" PointY="3.4420475260416663" />
+          <ConnectorPoint PointX="3.6302083333333335" PointY="3.4420475260416659" />
+          <ConnectorPoint PointX="3.4635416666666665" PointY="3.4420475260416663" />
+          <ConnectorPoint PointX="2" PointY="3.4420475260416663" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.ServerRecommendedUpdate">
+          <ConnectorPoint PointX="5.875" PointY="4.1295475260416659" />
+          <ConnectorPoint PointX="3.6302083333333335" PointY="4.129547526041665" />
+          <ConnectorPoint PointX="3.4635416666666665" PointY="4.1295475260416659" />
+          <ConnectorPoint PointX="2.40625" PointY="4.1295475260416659" />
+          <ConnectorPoint PointX="2.40625" PointY="5.125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.Group" Width="1.5" PointX="8.5" PointY="0.625" Height="2.5571907552083331" />
+        <EntityTypeShape EntityType="DataModel.Tag" Width="1.5" PointX="10.5" PointY="0.75" Height="1.211080729166667" />
+        <EntityTypeShape EntityType="DataModel.Recommendation" Width="1.75" PointX="8.75" PointY="3.875" Height="2.3648893229166656" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.GroupRecommendation">
+          <ConnectorPoint PointX="9.375" PointY="3.1821907552083331" />
+          <ConnectorPoint PointX="9.375" PointY="3.875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.GroupServer" Width="1.5" PointX="6" PointY="0.875" Height="1.7879850260416657" />
+        <AssociationConnector Association="DataModel.ServerGroupServer">
+          <ConnectorPoint PointX="6.6875" PointY="3.25" />
+          <ConnectorPoint PointX="6.6875" PointY="2.6629850260416656" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.GroupGroupServer">
+          <ConnectorPoint PointX="8.5" PointY="1.7689925130208328" />
+          <ConnectorPoint PointX="7.5" PointY="1.7689925130208328" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.ServerRecommendation">
+          <ConnectorPoint PointX="7.375" PointY="5.0574446614583328" />
+          <ConnectorPoint PointX="8.75" PointY="5.0574446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.GroupTag">
+          <ConnectorPoint PointX="10" PointY="1.3555403645833335" />
+          <ConnectorPoint PointX="10.5" PointY="1.3555403645833335" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.Prediction" Width="1.5" PointX="0.625" PointY="7.875" Height="1.9802864583333317" />
+        <AssociationConnector Association="DataModel.PredictionServer">
+          <ConnectorPoint PointX="2.125" PointY="9.3865364583333317" />
+          <ConnectorPoint PointX="7.03125" PointY="9.3865364583333317" />
+          <ConnectorPoint PointX="7.03125" PointY="6.576396484375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="7.875" PointY="7" Height="3.1340950520833335" />
+        <AssociationConnector Association="DataModel.ServerUser">
+          <ConnectorPoint PointX="7.375" PointY="6.576396484375" />
+          <ConnectorPoint PointX="7.875" PointY="7" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.UserCookie" Width="1.5" PointX="10.5" PointY="7" Height="1.7879850260416657" />
+        <AssociationConnector Association="DataModel.UserUserCookies">
+          <ConnectorPoint PointX="9.375" PointY="7.8939925130208337" />
+          <ConnectorPoint PointX="10.5" PointY="7.8939925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.UserGroup" Width="1.5" PointX="12" PointY="4.25" Height="1.5956835937499996" />
+        <AssociationConnector Association="DataModel.UserUserGroups">
+          <ConnectorPoint PointX="9.375" PointY="9.4922900390625" />
+          <ConnectorPoint PointX="12.78125" PointY="9.4922900390625" />
+          <ConnectorPoint PointX="12.78125" PointY="6.0379850260416656" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.GroupUserGroups">
+          <ConnectorPoint PointX="10" PointY="2.9874886067708335" />
+          <ConnectorPoint PointX="12.78125" PointY="2.9874886067708335" />
+          <ConnectorPoint PointX="12.78125" PointY="4.25" />
+        </AssociationConnector>
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,40 @@
+<div id="menu">
+<div class="left">
+	<span class="ownet_icon"><a href="index.html" title="Home owNET"><img src="graphics/ownet.png" alt="My.owNET"/></a></span> |
+	<a href="live/" title="">Live</a> |
+	<a href="rating/" title="">Ratings</a> |
+	<a href="recommend/" title="">Recommendations</a> |
+	<a href="files/" title="">Shared Files</a> |
+	<a href="history/" title="">History</a>
+</div>
+<div class="right">
+     <ul class="user-ownet">
+            <li class="last"><a id="tab-fancy-login" href="#tab-login" title="" style="padding-left: 0px;"><img src="graphics/a-user.png" class="loginimg" alt="" /> <strong>Login</strong></a></li>
+		    <li class="last pipe">|</li>
+		    <li class="logout"><a href="user/register.html" title=""><strong>Register</strong></a></li>
+	    </ul>
+</div>
+</div>
+<div class="none">
+	<div id="tab-login">
+		<h2>Login</h2>
+		<p>You have to be logged in to use all features.</p>
+		<form action="#" onsubmit="login(); return false;">  
+			<table class="table_login">
+				<tr>
+					<td class="table_header"><strong>Username</strong></td>
+					<td class="table_content"><input type="text" name="username" id="loginusername" class="input_login" value="" /></td>
+				</tr>
+				<tr>
+					<td class="table_header"><strong>Password</strong><span class="tip_help" title="If you forget password, contact your teacher for help."></span></td>
+					<td class="table_content"><input type="password" name="password" id="loginpassword" class="input_login" value="" /></td>
+				</tr>
+				<tr>
+					<td class="table_header"><div id="login-loader"></div></td>
+					<td class="table_submit"><input name="submit" type="submit" class="button_login" value="Login"/></td>
+				</tr>
+			</table>
+		</form>
+        <div id="login-message" class="message_validation none">Username or password was incorrect.</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+﻿<!-- Login in Iframe -->
+<div id="tab-login">
+	<h2>Login</h2>
+	<p>You have to be logged in to use these features.</p>
+	<form action="#" onsubmit="login(); return false;">  
+		<table class="table_login">
+			<tr>
+				<td class="table_header"><strong>Username</strong></td>
+				<td class="table_content"><input type="text" name="username" id="username" class="input_login" value="" /></td>
+			</tr>
+			<tr>
+				<td class="table_header"><strong>Password</strong><span class="tip_help" title="If you forget password, contact your teacher for help."></span></td>
+				<td class="table_content"><input type="password" name="password" id="password" class="input_login" value="" /></td>
+			</tr>
+			<tr>
+				<td class="table_header"><div id="login-loader"></div></td>
+				<td class="table_submit"><input name="submit" type="submit" class="button_login" value="Login"/></td>
+			</tr>
+		</table>
+	</form>
+    <div class="message_validation none" id="login-message">Username or password was incorrect.</div>
+</div>

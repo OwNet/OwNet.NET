@@ -1,0 +1,145 @@
+﻿<script type="text/javascript" src="js/jquery.eComboBox.js"></script>
+<script type="text/javascript">
+<!--
+    $(document).ready(function () {
+        $("#subdomain_select").eComboBox();
+        $("#domain_select").eComboBox();
+        $("#relative_select").eComboBox();
+        $("#postrelative_select").eComboBox();
+        $('input[name=caching]').click(function () {
+            $.ajax({
+                type: "POST",
+                url: baseUrl() + "cache/activate",
+                data: { status: $('input:radio[name=caching]:checked').val() },
+                dataType: 'json',
+                success: function (data) { }
+            });
+        });
+        $('#caching_exceptions_form').submit(function (event) {
+            event.preventDefault();
+
+            $.post(baseUrl() + "cache/new_exception",
+                {
+                    subdomain_select: $(this).find('#subdomain_select').val(),
+                    domain_select: $(this).find('#domain_select').val(),
+                    relative_select: $(this).find('#relative_select').val(),
+                    postrelative_select: $(this).find('#postrelative_select').val(),
+                    title: $(this).find('input[name="title"]').val(),
+                    dont_cache_on_server: $(this).find('input[name="dont_cache_on_server"]').val()
+                },
+                function (data) {
+                    $("#exceptions_tbody").prepend(data);
+                }
+            );
+        });
+    });
+
+    function removeException(e_id, link) {
+        confirm_message("Are you sure you want remove the selected exception?", function () {
+            $.post(baseUrl() + "cache/remove_exception",
+                { id: e_id },
+                function (data) {
+                    $(link).parent().parent().remove();
+                }
+            );
+        });
+    }
+-->
+</script>
+<style type="text/css">
+    small 
+    {
+        font-size: x-small;
+    }
+    .exception_path_select 
+    {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .link_text 
+    {
+	    color: #777777; 
+	    text-decoration: underline;
+    }
+</style>
+
+<!-- Caching options -->
+<div class="cleaner">
+	<div id="user-info"></div>
+    <h2>Caching Options</h2>
+    <form name="caching_options_form" id="caching_options_form">
+        <input type="radio" name="caching" value="on" /> Caching <b>on</b><br />
+        <input type="radio" name="caching" value="off" /> Caching <b>off</b>
+    </form>
+</div>
+
+<!-- Custom blacklist -->
+<div class="cleaner">
+    <form name="caching_exceptions_form" id="caching_exceptions_form" method="post" action="#">
+    	<h2>Add Exception</h2>
+        <p><strong>Do not cache websites matching:</strong></p>
+        <div>
+            <span class="link_text">http://(www.)</span>
+            <div class="exception_path_select">
+                <select id="subdomain_select" name="subdomain_select">
+                    <option value="*">Any</option>
+                    <option value="">None</option>
+                </select><br />
+                <small>subdomain</small>
+            </div>
+            <span class="link_text">(.)</span>
+            <div class="exception_path_select">
+                <select id="domain_select" name="domain_select">
+                    <option value="*">Any</option>
+                </select><br />
+                <small>domain</small>
+            </div>
+            <span class="link_text">/</span>
+            <div class="exception_path_select">
+                <select id="relative_select" name="relative_select">
+                    <option value="*">Any</option>
+                    <option value="">None</option>
+                </select><br />
+                <small>relative path</small>
+            </div>
+            <span class="link_text">(/)</span>
+            <div class="exception_path_select">
+                <select id="postrelative_select" name="postrelative_select">
+                    <option value="">None</option>
+                    <option value="*">Any</option>
+                </select><br />
+                <small>ending</small>
+            </div>
+        </div>
+        <p>
+            <strong>Exception title:</strong><br />
+            <input type="text" name="title" size="30" />
+        </p>
+        <p>
+            <input type="checkbox" value="1" name="dont_cache_on_server" /> Do not cache on server
+        </p>
+        <p>
+            <input type="submit" value="Add" />
+        </p>
+        <input type="hidden" name="parent_url" />
+    </form>
+</div>
+
+<!-- Exceptions -->
+<div class="cleaner">
+    <h2>Caching Exceptions</h2>
+    <table class="table_links">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Expression</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody id="exceptions_tbody">
+            <tr>
+                <td colspan="3">There are no exceptions available.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

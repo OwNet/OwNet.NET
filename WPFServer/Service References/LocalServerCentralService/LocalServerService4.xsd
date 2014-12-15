@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServiceEntities.CentralService.v2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8451/v3/LocalServerService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8451/v3/LocalServerService.svc?xsd=xsd5" namespace="http://imaginecup.fiit.stuba.sk/2012/" />
+  <xs:complexType name="ServerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerInfo" nillable="true" type="tns:ServerInfo" />
+  <xs:complexType name="Updates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LinksToUpdate" nillable="true" type="tns:ArrayOfLinkToUpdate" />
+      <xs:element minOccurs="0" name="ModifiedGroupLogs" nillable="true" type="tns:ArrayOfGroupReport" />
+      <xs:element minOccurs="0" name="NewGroupRecommendationLogs" nillable="true" type="tns:ArrayOfGroupRecommendationReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Updates" nillable="true" type="tns:Updates" />
+  <xs:complexType name="ArrayOfLinkToUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LinkToUpdate" nillable="true" type="tns:LinkToUpdate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLinkToUpdate" nillable="true" type="tns:ArrayOfLinkToUpdate" />
+  <xs:complexType name="LinkToUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsoluteUri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LinkToUpdate" nillable="true" type="tns:LinkToUpdate" />
+  <xs:complexType name="ArrayOfGroupReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GroupReport" nillable="true" type="tns:GroupReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGroupReport" nillable="true" type="tns:ArrayOfGroupReport" />
+  <xs:complexType name="GroupReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Tags" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GroupReport" nillable="true" type="tns:GroupReport" />
+  <xs:complexType name="ArrayOfGroupRecommendationReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GroupRecommendationReport" nillable="true" type="tns:GroupRecommendationReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGroupRecommendationReport" nillable="true" type="tns:ArrayOfGroupRecommendationReport" />
+  <xs:complexType name="GroupRecommendationReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsoluteUri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GroupRecommendationReport" nillable="true" type="tns:GroupRecommendationReport" />
+  <xs:complexType name="ArrayOfAccessLogReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccessLogReport" nillable="true" type="tns:AccessLogReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccessLogReport" nillable="true" type="tns:ArrayOfAccessLogReport" />
+  <xs:complexType name="AccessLogReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsoluteUri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessedAt" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DownloadedFrom" type="xs:int" />
+      <xs:element minOccurs="0" name="FetchDuration" type="xs:double" />
+      <xs:element minOccurs="0" name="Type" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccessLogReport" nillable="true" type="tns:AccessLogReport" />
+  <xs:complexType name="ArrayOfActivityLogReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityLogReport" nillable="true" type="tns:ActivityLogReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActivityLogReport" nillable="true" type="tns:ArrayOfActivityLogReport" />
+  <xs:complexType name="ActivityLogReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsoluteURI" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://imaginecup.fiit.stuba.sk/2012/" minOccurs="0" name="Action" type="q2:ActivityAction" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://imaginecup.fiit.stuba.sk/2012/" minOccurs="0" name="Type" type="q3:ActivityType" />
+      <xs:element minOccurs="0" name="UserFirstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserSurname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityLogReport" nillable="true" type="tns:ActivityLogReport" />
+</xs:schema>

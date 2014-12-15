@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8bda5eef-e0af-44fd-accb-e434380204c9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TrackingService.wsdl" MetadataType="Wsdl" ID="9d5f99e3-4807-4eee-9302-18b8ab9f0d78" SourceId="1" SourceUrl="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?wsdl" />
+    <MetadataFile FileName="TrackingService.disco" MetadataType="Disco" ID="1fd6b71c-f607-4c1f-98c7-f7bfb977bf50" SourceId="1" SourceUrl="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?disco" />
+    <MetadataFile FileName="TrackingService.xsd" MetadataType="Schema" ID="b42daeb4-d3ff-48b3-9e04-8ceeef468826" SourceId="1" SourceUrl="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TrackingService1.xsd" MetadataType="Schema" ID="643d0950-5bee-46a8-b0f1-33ca0461c18b" SourceId="1" SourceUrl="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TrackingService2.xsd" MetadataType="Schema" ID="d83d856c-9d26-4688-8024-cae4f3a19473" SourceId="1" SourceUrl="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TrackingService3.xsd" MetadataType="Schema" ID="5422bb60-f13c-428d-9641-adeb86c34aec" SourceId="1" SourceUrl="http://yatta.fiit.stuba.sk/WebTracker/TrackingService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

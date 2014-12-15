@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Search</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+	<base href="http://my.ownet/" />
+    <link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+    <link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	<!-- qTip -->
+	<script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+	
+   	<script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    
+	<script type="text/javascript" charset="utf-8"><!--
+	    function getSearch(query) {
+	        TabLoad("search_results", "search/results?" + query + "&page=1");
+	        //type=" + $('input:radio[name=type]:checked').val() + 
+	    }
+
+	    $(document).ready(function () {
+	        if (document.location.href.match(/\?/)) {
+	            var pars = document.location.href.replace(/^.*\?/, "").replace(/\s/g, "");
+	            if (pars === "") { return; }
+	            var args = pars.split("&");
+
+	            for (i = 0; i < args.length; ++i) {
+	                var tuple = args[i].split("=");
+	                if (tuple[0] === "type") {
+	                    switch (tuple[1]) {
+	                        case "server":
+	                            $("#serversearch").attr("checked", "checked");
+	                            break;
+	                        case "local":
+	                            $("#localsearch").attr("checked", "checked");
+	                            break;
+	                        case "tags":
+	                            $("#tagsearch").attr("checked", "checked");
+	                            break;
+	                    }
+	                }
+	                else if (tuple[0] === "query") {
+	                    var query = decodeURIComponent(tuple[1]).replace(/\+/g, " ");
+	                    $("#search_input").val(query);
+	                    $(".search_query").text(query);
+	                }
+	            }
+	            getSearch(pars);
+	        }
+	    });
+	    $(document).ready(function () {
+	        // otvorime tooltip pre danu sekcii
+	        OwnetTooltip("search");
+	    });
+	--></script>
+</head>
+<body>
+<div id="content">
+	<div id="page-top-lath"></div>
+	<div id="page">
+	
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+
+		</div>
+	        <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close"></div>
+			<strong>SEARCH</strong> » Here you can search for already visited webpages, locally on your computer, globally on all computers or by tags.
+		</div>
+		<!-- Bing Search Form -->
+		<div id="search">	
+			<div id="search-logo"><img src="graphics/ownet1.png" alt="owNET"/></div>
+			<form method="get" action="search/index.html">  
+				<div>
+					<input type="text" class="input_search" size="40" autocomplete="off" placeholder="Search keywords" id="search_input" name="query" />  
+					<input type="submit" class="button_search" value="Search" /> <br />
+                    <input type="radio" name="type" value="local" id="localsearch" checked="checked" /> Local search
+                    <input type="radio" id="serversearch" name="type" value="server" /> Search on network
+                    <input type="radio" id="tagsearch" name="type" value="tags" /> Search by tags
+				</div>
+			</form>
+		</div>	
+		
+		<!-- Search results -->
+		<div id="recommend-links">
+		
+			<h2>Search results for <span class="search_query"></span></h2>
+			<div class="cleaner" id="search_results">
+
+            <div class="message_status"><div class="message_info">Enter your search query.</div></div>
+
+				<!-- <div class="recommend-links-result">
+									<h3><a href="#">Health care - Wikipedia, the free encyclopedia</a></h3>
+									<p>Health care (or healthcare) is the diagnosis, treatment, and prevention of disease, illness, injury, and other physical and mental impairments.</p>
+									<a href="#" class="link-web">http://en.wikipedia.org/wiki/Health_care</a>
+								</div> -->
+			</div>
+		</div>
+	</div>
+	
+	<!-- Footer of page -->
+		<div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>

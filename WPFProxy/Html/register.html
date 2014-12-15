@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<title>OwNet | Registration</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="robots" content="all, follow"/>
+	<meta name="author" content="5ML team"/>
+	<base href="http://my.ownet/" />
+
+	<link rel="shortcut icon" href="favicon.png" type="image/ico"/>
+	<link rel="icon" href="favicon.png"/>
+	<script type="text/javascript" src='js/jquery.js'></script>
+	
+    <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	
+
+	<!-- qTip -->
+	<script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/qtip/jquery.qtip.min.css" />
+	<!-- Hlavne CSS musi byt napisane ako posledne CSS -->
+	<link rel="stylesheet" type="text/css" href="css/proxy.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/messages.css" media="screen"/>
+	
+	<script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/qtip.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+    <script type="text/javascript"><!--
+        $(function () {
+            $("#tab-links").organicTabs({ "speed": 250 });
+        });
+        $(document).ready(function () {
+            // otvorime tooltip pre danu sekcii
+            OwnetTooltip("registration");
+        });
+    --></script>
+</head>
+<body>
+
+
+<div id="content">
+	<div id="page-top-lath"></div>
+	<div id="page">
+	
+		<!-- Menu of page -->
+		<div id="menubar" class="cleaner">
+			
+		</div>
+
+        <!-- Tooltip -->
+		<div id="ownet-tooltip">
+			<div class="ownet-tooltip-close"><img src="graphics/close_orange.png" alt="Close" title="Permanently close"></div>
+			<strong>REGISTRATION</strong> » Here you can register to OwNet.
+		</div>
+
+        <div id="tab-links">
+        	<h1><img src="graphics/register.png" class="img-7" alt=""/> Register new user</h1>	
+			
+			<div id="register" class="cleaner">
+				<div id="register-promo"><img src="graphics/children.jpg" alt="" /></div>
+				<div id="tab-login" style="width: 60%;">
+					
+					<!-- Register form -->
+                    <div id="registerform">
+					<form action="user/register.html" method="post">  
+						<table class="table_login">
+							<tr>
+								<td class="table_header_reg"><strong>Username <span style="color: Red">*</span></strong></td>
+								<td class="table_content"><input type="text" name="username" id="username" class="input_register" value="" /><span class="tip_help" title="Username identifies your account in OwNet. Username may contain letters and numbers only. Minimum length is 4 characters, maximum is 10 characters."></span></td>
+							</tr>
+							<tr>
+								<td class="table_header_reg"><strong>Password <span style="color: Red">*</span></strong></td>
+								<td class="table_content"><input type="password" name="password" id="password" class="input_register" value="" /><span class="tip_help" title="Password protects your account to be accessed by users other than you. Choose the password you will easily remember. Enter word constructed from letters and numbers with minimum length of 4 and maximum length of 10 characters. If you forget your password, contact your teacher."></span></td>
+							</tr>
+							<tr>
+								<td class="table_header_reg"><strong>Confirm password <span style="color: Red">*</span></strong></td>
+								<td class="table_content"><input type="password" name="password2" id="password2" class="input_register" value="" /></td>
+							</tr>
+							<tr>
+								<td class="table_header_reg">&nbsp;</td>
+								<td class="table_submit">&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="table_header_reg"><strong>First name <span style="color: Red">*</span></strong></td>
+								<td class="table_content"><input type="text" name="firstname" id="firstname" class="input_register" value="" /><span class="tip_help" title="Firstname can contain letters, numbers, spaces, dots and commas. Minimum length is 2 characters, maximum is 15."></span></td>
+							</tr>
+                            <tr>
+								<td class="table_header_reg"><strong>Surname <span style="color: Red">*</span></strong></td>
+								<td class="table_content"><input type="text" name="surname" id="surname" class="input_register" value="" /><span class="tip_help" title="Surname can contain letters, numbers, spaces, dots and commas. Minimum length is 2 characters, maximum is 15."></span></td>
+							</tr>
+							<tr>
+								<td class="table_header_reg"><strong>Gender <span style="color: Red">*</span></strong></td>
+								<td class="table_content"><span id="genderselect"><input type="radio" name="gender" id="genderfemale" value="female"  /> Female <input type="radio" id="gendermale" name="gender" value="male" /> Male</span></td>
+							</tr>
+							<tr>
+								<td class="table_header_reg"><strong>E-mail</strong></td>
+								<td class="table_content"><input type="text" name="email" id="email" class="input_register" value="" /><span class="tip_help" title="Your e-mail address. If you don't have any, leave it blank."></span></td>
+							</tr>
+							<tr>
+								<td class="table_header_reg">&nbsp;</td>
+								<td class="table_submit" style="text-align: left"><span style="color: Red">* required field</span></td>
+							</tr>
+							<tr>
+								<td class="table_header_reg center"><div id="reg-loader"></div></td>
+								<td class="table_submit_reg"><input name="submit-register" type="submit" class="button_login" value="Register"/></td>
+							</tr>
+						</table>
+					</form>
+                    </div>
+				</div>
+			</div>
+         </div>		
+	</div>
+	
+	<!-- Footer of page -->
+		<div id="footer"></div>
+	<div id="footerbar" class="cleaner">
+		<div class="left">© 2012 OwNet</div>
+		<div class="right">
+			<a href="http://ownet.fiit.stuba.sk/" target="_blank">Info about project</a> |
+			<a href="http://ownet.fiit.stuba.sk/use.php" target="_blank">Help</a> |
+            <a href="http://ownet.fiit.stuba.sk/contact.php" target="_blank">Contact</a>
+		</div>
+	</div> 
+</div>
+</body>
+</html>
